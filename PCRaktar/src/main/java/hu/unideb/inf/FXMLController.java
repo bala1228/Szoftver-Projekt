@@ -6,6 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
@@ -33,7 +35,8 @@ public class FXMLController implements Initializable {
    private final String MENU_PC_RESZEK="PC részek"; 
    private final String MENU_EXPORT="Exportálás";
    
-   
+   @FXML
+    private AnchorPane BASE;
    
     @FXML
     private StackPane menuPane;
@@ -49,6 +52,28 @@ public class FXMLController implements Initializable {
 
     @FXML
     private TableView hazTable;
+    
+       @FXML
+    private Pane popUpGephazPane;
+
+    @FXML
+    void popUpGephazHozzaadasBttAction(ActionEvent event) {
+       
+    }
+
+    @FXML
+    void popUpGephazMegseBttAction(ActionEvent event) {
+        hazPane.setOpacity(1);
+        hazPane.setDisable(false); 
+        popUpGephazPane.setVisible(false);
+    }
+
+    @FXML
+    void ujHozzadasAGephazhoz(ActionEvent event) {
+        hazPane.setOpacity(0.3);
+        hazPane.setDisable(true); 
+        popUpGephazPane.setVisible(true);
+    }
     
     
     private final ObservableList<Gephaz> data=
