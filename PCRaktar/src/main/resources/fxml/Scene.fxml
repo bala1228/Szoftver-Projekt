@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.FXMLController">
+    <children>
+      <SplitPane dividerPositions="0.19117647058823528" layoutY="58.0" prefHeight="543.0" prefWidth="750.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <StackPane id="menuPane" fx:id="menuPane" layoutX="-43.0" layoutY="47.0" prefHeight="541.0" prefWidth="143.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+          </AnchorPane>
+                    
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Pane id="exportPane" fx:id="exportPane" prefHeight="541.0" prefWidth="602.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane id="hazPane" fx:id="hazPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>                       
+                        <TableView id="hazTable" fx:id="hazTable" prefHeight="465.0" prefWidth="602.0">
+                            <placeholder>
+                              <javafx.scene.control.Label text="Nincs adat." />
+                            </placeholder>    
+                          <columns>
+                            
+                          </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+                  <StackPane id="starterPane" fx:id="starterPane" prefHeight="541.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />                
+               </children>
+          </AnchorPane>
+        </items>
+      </SplitPane>
+      <Text layoutX="301.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PC Raktár">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>
