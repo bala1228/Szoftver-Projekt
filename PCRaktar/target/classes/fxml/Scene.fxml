@@ -24,7 +24,7 @@
                   <Pane id="exportPane" fx:id="exportPane" prefHeight="541.0" prefWidth="602.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <Pane id="hazPane" fx:id="hazPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>                       
-                        <TableView id="hazTable" fx:id="hazTable" prefHeight="465.0" prefWidth="602.0">
+                        <TableView id="hazTable" fx:id="hazTable" editable="true" prefHeight="465.0" prefWidth="602.0">
                             <placeholder>
                               <javafx.scene.control.Label text="Nincs adat." />
                             </placeholder>    

@@ -6,6 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -69,15 +70,55 @@ public class FXMLController implements Initializable {
         nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nevCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("nev"));
         
+        nevCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Gephaz,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Gephaz,String> t)
+                    {
+                        ((Gephaz) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setNev(t.getNewValue());
+                    }
+                }
+        );
+        
+        
          TableColumn alaplaptipusCol= new TableColumn("Alaplaptípusa:");
         alaplaptipusCol.setMinWidth(100);
         alaplaptipusCol.setCellFactory(TextFieldTableCell.forTableColumn());
         alaplaptipusCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("alaplaptipus"));
         
+        alaplaptipusCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Gephaz,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Gephaz,String> t)
+                    {
+                        ((Gephaz) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setAlaplaptipus(t.getNewValue());
+                    }
+                }
+        );
+        
          TableColumn beepitetVentilatorokSzamaCol= new TableColumn("Beépített ventilatorok száma:");
         beepitetVentilatorokSzamaCol.setMinWidth(100);
         beepitetVentilatorokSzamaCol.setCellFactory(TextFieldTableCell.forTableColumn());
         beepitetVentilatorokSzamaCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("beepitetVentilatorokSzama"));
+        
+         beepitetVentilatorokSzamaCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Gephaz,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Gephaz,String> t)
+                    {
+                        ((Gephaz) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setBeepitetVentilatorokSzama(t.getNewValue());
+                    }
+                }
+        );
         
   //       TableColumn szinCol= new TableColumn("Szín:");
   //      szinCol.setMinWidth(100);
@@ -89,10 +130,36 @@ public class FXMLController implements Initializable {
         ssdhelyCol.setCellFactory(TextFieldTableCell.forTableColumn());
         ssdhelyCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("ssdhely"));
         
+        ssdhelyCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Gephaz,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Gephaz,String> t)
+                    {
+                        ((Gephaz) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setSsdhely(t.getNewValue());
+                    }
+                }
+        );
+        
          TableColumn arCol= new TableColumn("Ár");
         arCol.setMinWidth(100);
         arCol.setCellFactory(TextFieldTableCell.forTableColumn());
         arCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("ar"));
+        
+        arCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Gephaz,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Gephaz,String> t)
+                    {
+                        ((Gephaz) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setAr(t.getNewValue());
+                    }
+                }
+        );
         
         hazTable.getColumns().addAll(nevCol,alaplaptipusCol,
                 beepitetVentilatorokSzamaCol,/*szinCol,*/ssdhelyCol,arCol);
