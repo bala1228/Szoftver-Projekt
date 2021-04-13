@@ -70,7 +70,37 @@ public class FXMLController implements Initializable {
     private TextField gephazSsdhelyInput;
 
     @FXML
-    private TextField gephazArInput;   
+    private TextField gephazArInput; 
+    
+    @FXML
+    private TextField gephazExportMegseInput;
+    
+    @FXML
+    private Pane popUpGephazExportPane;
+
+    @FXML
+    void exportalasAGephazhoz(ActionEvent event) {
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true); 
+        
+        hazPane.setOpacity(0.3);
+        hazPane.setDisable(true); 
+        popUpGephazExportPane.setVisible(true);
+    }
+
+    @FXML
+    void popUpGephazExportalasMegseBttAction(ActionEvent event) {
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        hazPane.setOpacity(1);
+        hazPane.setDisable(false); 
+        popUpGephazExportPane.setVisible(false);
+    }
+
+    @FXML
+    void popUpGephazExportalasPDFBttAction(ActionEvent event) {
+
+    }
 
     @FXML
     void popUpGephazHozzaadasBttAction(ActionEvent event) {
