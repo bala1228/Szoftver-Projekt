@@ -41,8 +41,8 @@
                         <Button fx:id="ExportálásGephazBtt" layoutX="398.0" layoutY="474.0" mnemonicParsing="false" onAction="#exportalasAGephazhoz" text="Exportálás" />
                      </children>
                   </Pane>
-                  <StackPane id="starterPane" fx:id="starterPane" prefHeight="541.0" prefWidth="602.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Pane id="popUpGephazPane" fx:id="popUpGephazPane" layoutX="104.0" layoutY="37.0" prefHeight="399.0" prefWidth="355.0" visible="false">
+                  <StackPane id="starterPane" fx:id="starterPane" prefHeight="541.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane id="popUpGephazPane" fx:id="popUpGephazHozzadasPane" layoutX="104.0" layoutY="37.0" prefHeight="399.0" prefWidth="355.0" visible="false">
                      <children>
                         <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#b8cee3e8" height="399.0" stroke="BLACK" strokeType="INSIDE" width="355.0" />
                         <Button layoutX="232.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpGephazHozzaadasBttAction" text="Hozzádás" />
@@ -62,11 +62,11 @@
                         <Text layoutX="103.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Új gépház hozzáadása" />
                         <VBox layoutX="182.0" layoutY="46.0" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
                            <children>
-                              <TextField fx:id="gephazNevInput" />
-                              <TextField fx:id="gephazalAlaplaptipusInput" />
-                              <TextField fx:id="gephazVentillatorokszamaInput" />
-                              <TextField fx:id="gephazSsdhelyInput" />
-                              <TextField fx:id="gephazArInput" />
+                              <TextField fx:id="gephazHozzadasNevInput" />
+                              <TextField fx:id="gephazHozzadasAlaplaptipusInput" />
+                              <TextField fx:id="gephazHozzadasVentillatorokszamaInput" />
+                              <TextField fx:id="gephazHozzadasSsdhelyInput" />
+                              <TextField fx:id="gephazHozzadasArInput" />
                            </children>
                            <padding>
                               <Insets top="10.0" />
@@ -77,7 +77,7 @@
                   <Pane fx:id="popUpGephazExportPane" layoutX="62.0" layoutY="22.0" prefHeight="354.0" prefWidth="364.0" visible="false">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#95f5dd" height="354.0" stroke="BLACK" strokeType="INSIDE" width="365.0" />
-                        <TextField fx:id="gephazExportMegseInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
+                        <TextField fx:id="gephazExportFileNeveInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
                         <Button layoutX="202.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpGephazExportalasPDFBttAction" text="PDF Mentés" />
                         <Button layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpGephazExportalasMegseBttAction" text="Mégse" />
                         <Text layoutX="65.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exportálás PDF-be">

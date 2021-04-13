@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -34,7 +33,7 @@ public class FXMLController implements Initializable {
    private final String MENU_EXIT="Kilépés";
    private final String MENU_GEPHAZAK="Gépházak"; 
    private final String MENU_PC_RESZEK="PC részek"; 
-   private final String MENU_EXPORT="Exportálás";
+   private final String MENU_EXPORT="EZ egy másik pane";
    
    @FXML
     private AnchorPane BASE;
@@ -55,25 +54,25 @@ public class FXMLController implements Initializable {
     private TableView hazTable;
     
     @FXML
-    private Pane popUpGephazPane;
+    private Pane popUpGephazHozzadasPane;
        
     @FXML
-    private TextField gephazNevInput;
+    private TextField gephazHozzadasNevInput;
 
     @FXML
-    private TextField gephazalAlaplaptipusInput;
+    private TextField gephazHozzadasAlaplaptipusInput;
 
     @FXML
-    private TextField gephazVentillatorokszamaInput;
+    private TextField gephazHozzadasVentillatorokszamaInput;
 
     @FXML
-    private TextField gephazSsdhelyInput;
+    private TextField gephazHozzadasSsdhelyInput;
 
     @FXML
-    private TextField gephazArInput; 
+    private TextField gephazHozzadasArInput; 
     
     @FXML
-    private TextField gephazExportMegseInput;
+    private TextField gephazExportFileNeveInput;
     
     @FXML
     private Pane popUpGephazExportPane;
@@ -99,29 +98,49 @@ public class FXMLController implements Initializable {
 
     @FXML
     void popUpGephazExportalasPDFBttAction(ActionEvent event) {
-
+               
+        String fileNev=gephazExportFileNeveInput.getText();
+        fileNev = fileNev.replaceAll("\\s+","");
+        
+        if(fileNev != null && !fileNev.equals("") )
+        {              
+            PdfGeneration pdfCreator=new PdfGeneration();
+            pdfCreator.pdfGenration(fileNev,data);
+        }
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        hazPane.setOpacity(1);
+        hazPane.setDisable(false); 
+        popUpGephazExportPane.setVisible(false);
     }
 
     @FXML
     void popUpGephazHozzaadasBttAction(ActionEvent event) {
+        try
+        {
         data.add(new Gephaz(
-                gephazNevInput.getText(),
-                gephazalAlaplaptipusInput.getText(),
-                gephazVentillatorokszamaInput.getText(),
-                gephazSsdhelyInput.getText(),               
-                gephazArInput.getText()));
+                gephazHozzadasNevInput.getText(),
+                gephazHozzadasAlaplaptipusInput.getText(),
+                gephazHozzadasVentillatorokszamaInput.getText(),
+                gephazHozzadasSsdhelyInput.getText(),               
+                gephazHozzadasArInput.getText()));
         
-        gephazNevInput.clear();
-        gephazalAlaplaptipusInput.clear();
-        gephazVentillatorokszamaInput.clear();
-        gephazSsdhelyInput.clear();             
-        gephazArInput.clear();
+        gephazHozzadasNevInput.clear();
+        gephazHozzadasAlaplaptipusInput.clear();
+        gephazHozzadasVentillatorokszamaInput.clear();
+        gephazHozzadasSsdhelyInput.clear();             
+        gephazHozzadasArInput.clear();
         
         menuPane.setOpacity(1);
         menuPane.setDisable(false);
         hazPane.setOpacity(1);
         hazPane.setDisable(false); 
-        popUpGephazPane.setVisible(false);
+        popUpGephazHozzadasPane.setVisible(false);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -130,7 +149,7 @@ public class FXMLController implements Initializable {
         menuPane.setDisable(false);
         hazPane.setOpacity(1);
         hazPane.setDisable(false); 
-        popUpGephazPane.setVisible(false);
+        popUpGephazHozzadasPane.setVisible(false);
     }
 
     @FXML
@@ -140,7 +159,7 @@ public class FXMLController implements Initializable {
         
         hazPane.setOpacity(0.3);
         hazPane.setDisable(true); 
-        popUpGephazPane.setVisible(true);
+        popUpGephazHozzadasPane.setVisible(true);
     }
     
     
@@ -334,11 +353,13 @@ public class FXMLController implements Initializable {
 
     }
     
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setTableData();
         setMenuData();
         setStarterPic();
+        
     }    
 
     
