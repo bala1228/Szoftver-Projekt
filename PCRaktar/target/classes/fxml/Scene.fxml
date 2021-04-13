@@ -49,10 +49,10 @@
                         <VBox layoutX="22.0" layoutY="37.0" prefHeight="200.0" prefWidth="105.0" spacing="20.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Név:" wrappingWidth="54.13671875" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ár:" wrappingWidth="54.13671875" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ventilatorok száma:" wrappingWidth="140.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Alaplaptípus" wrappingWidth="66.771484375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ventilatorok száma:" wrappingWidth="140.0" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SSD hely:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ár:" wrappingWidth="54.13671875" />
                            </children>
                            <padding>
                               <Insets top="20.0" />
@@ -61,11 +61,11 @@
                         <Text layoutX="103.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Új gépház hozzáadása" />
                         <VBox layoutX="182.0" layoutY="46.0" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
                            <children>
-                              <TextField />
-                              <TextField />
-                              <TextField />
-                              <TextField />
-                              <TextField />
+                              <TextField fx:id="gephazNevInput" />
+                              <TextField fx:id="gephazalAlaplaptipusInput" />
+                              <TextField fx:id="gephazVentillatorokszamaInput" />
+                              <TextField fx:id="gephazSsdhelyInput" />
+                              <TextField fx:id="gephazArInput" />
                            </children>
                            <padding>
                               <Insets top="10.0" />

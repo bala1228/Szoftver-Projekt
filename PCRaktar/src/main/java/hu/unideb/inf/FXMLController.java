@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -53,12 +54,44 @@ public class FXMLController implements Initializable {
     @FXML
     private TableView hazTable;
     
-       @FXML
+    @FXML
     private Pane popUpGephazPane;
+       
+    @FXML
+    private TextField gephazNevInput;
+
+    @FXML
+    private TextField gephazalAlaplaptipusInput;
+
+    @FXML
+    private TextField gephazVentillatorokszamaInput;
+
+    @FXML
+    private TextField gephazSsdhelyInput;
+
+    @FXML
+    private TextField gephazArInput;   
 
     @FXML
     void popUpGephazHozzaadasBttAction(ActionEvent event) {
-       
+        data.add(new Gephaz(
+                gephazNevInput.getText(),
+                gephazalAlaplaptipusInput.getText(),
+                gephazVentillatorokszamaInput.getText(),
+                gephazSsdhelyInput.getText(),               
+                gephazArInput.getText()));
+        
+        gephazNevInput.clear();
+        gephazalAlaplaptipusInput.clear();
+        gephazVentillatorokszamaInput.clear();
+        gephazSsdhelyInput.clear();             
+        gephazArInput.clear();
+        
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        hazPane.setOpacity(1);
+        hazPane.setDisable(false); 
+        popUpGephazPane.setVisible(false);
     }
 
     @FXML
@@ -79,6 +112,8 @@ public class FXMLController implements Initializable {
         hazPane.setDisable(true); 
         popUpGephazPane.setVisible(true);
     }
+    
+    
     
     
     private final ObservableList<Gephaz> data=
