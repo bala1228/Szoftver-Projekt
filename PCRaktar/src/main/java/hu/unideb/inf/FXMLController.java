@@ -63,6 +63,8 @@ public class FXMLController implements Initializable {
 
     @FXML
     void popUpGephazMegseBttAction(ActionEvent event) {
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
         hazPane.setOpacity(1);
         hazPane.setDisable(false); 
         popUpGephazPane.setVisible(false);
@@ -70,6 +72,9 @@ public class FXMLController implements Initializable {
 
     @FXML
     void ujHozzadasAGephazhoz(ActionEvent event) {
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true); 
+        
         hazPane.setOpacity(0.3);
         hazPane.setDisable(true); 
         popUpGephazPane.setVisible(true);
