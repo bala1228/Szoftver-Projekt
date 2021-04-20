@@ -1,35 +1,32 @@
 
 package hu.unideb.inf;
 
-
 import javafx.beans.property.SimpleStringProperty;
 
 
-    
-public class Gephaz
-{
+public class Alaplap {
     private final SimpleStringProperty nev;
-    private final SimpleStringProperty alaplaptipus;
-    private final SimpleStringProperty beepitetVentilatorokSzama;
-    private final SimpleStringProperty ssdhely;
+    private final SimpleStringProperty formatum;
+    private final SimpleStringProperty proceszorFog;
+    private final SimpleStringProperty memoriaFog;
     private final SimpleStringProperty ar;
 
-    public Gephaz() {
+    public Alaplap() {
         this.nev = new SimpleStringProperty("");
-        this.alaplaptipus = new SimpleStringProperty( "");
-        this.beepitetVentilatorokSzama = new SimpleStringProperty("");
-        this.ssdhely = new SimpleStringProperty("");
+        this.formatum = new SimpleStringProperty( "");
+        this.proceszorFog = new SimpleStringProperty("");
+        this.memoriaFog = new SimpleStringProperty("");
         this.ar = new SimpleStringProperty("");
     }
     
     
-    public Gephaz(String nev, String alaplaptipus, String beepitetVentilatorokSzama,
+    public Alaplap(String nev, String alaplaptipus, String beepitetVentilatorokSzama,
                    String ssdhely, String ar) {
         this.nev = new SimpleStringProperty(nev);
-        this.alaplaptipus = new SimpleStringProperty( alaplaptipus);
-        this.beepitetVentilatorokSzama = new SimpleStringProperty(beepitetVentilatorokSzama);
+        this.formatum = new SimpleStringProperty( alaplaptipus);
+        this.proceszorFog = new SimpleStringProperty(beepitetVentilatorokSzama);
        // this.szin = new SimpleStringProperty(szin);
-        this.ssdhely = new SimpleStringProperty(ssdhely);
+        this.memoriaFog = new SimpleStringProperty(ssdhely);
         this.ar = new SimpleStringProperty(ar);
     }
 
@@ -46,29 +43,29 @@ public class Gephaz
 
     public void setAlaplaptipus(String alaplaptipus)
     {
-        this.alaplaptipus.set(alaplaptipus);
+        this.formatum.set(alaplaptipus);
     }
 
     public String getAlaplaptipus() {
-        return this.alaplaptipus.get() ; 
+        return this.formatum.get() ; 
     }
     
     public void setBeepitetVentilatorokSzama(String beepitetVentilatorokSzama)
     {
-        this.beepitetVentilatorokSzama.set(beepitetVentilatorokSzama);
+        this.proceszorFog.set(beepitetVentilatorokSzama);
     }
 
     public String getBeepitetVentilatorokSzama() {
-        return this.beepitetVentilatorokSzama.get() ; 
+        return this.proceszorFog.get() ; 
     }
     
     public void setSsdhely(String ssdhely)
     {
-        this.ssdhely.set(ssdhely);
+        this.memoriaFog.set(ssdhely);
     }
 
     public String getSsdhely() {
-        return this.ssdhely.get() ; 
+        return this.memoriaFog.get() ; 
     }
     
     public void setAr(String ar)
@@ -80,5 +77,4 @@ public class Gephaz
         return this.ar.get() ; 
     }
     
- 
 }

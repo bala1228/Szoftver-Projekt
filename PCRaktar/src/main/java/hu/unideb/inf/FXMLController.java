@@ -33,7 +33,7 @@ public class FXMLController implements Initializable {
    private final String MENU_EXIT="Kilépés";
    private final String MENU_GEPHAZAK="Gépházak"; 
    private final String MENU_PC_RESZEK="PC részek"; 
-   private final String MENU_EXPORT="EZ egy másik pane";
+   private final String MENU_EXPORT="Alaplapok";
    
    @FXML
     private AnchorPane BASE;
@@ -45,13 +45,16 @@ public class FXMLController implements Initializable {
     private Pane starterPane;
     
     @FXML
-    private Pane exportPane;
+    private Pane AlaplapPane;
 
     @FXML
     private Pane hazPane;
 
     @FXML
     private TableView hazTable;
+    
+    @FXML
+    private TableView alaplapTable;
     
     @FXML
     private Pane popUpGephazHozzadasPane;
@@ -76,7 +79,82 @@ public class FXMLController implements Initializable {
     
     @FXML
     private Pane popUpGephazExportPane;
+    
+    @FXML
+    private Pane popUpAlaplapHozzadasPane;
 
+    @FXML
+    private TextField AlaplapHozzadasNevInput;
+
+    @FXML
+    private TextField AlaplapHozzadasFormatumInput;
+
+    @FXML
+    private TextField AlaplapHozzadasProcesszorFogInput;
+
+    @FXML
+    private TextField AlaplapHozzadasmemoriaFogInput;
+
+    @FXML
+    private TextField AlaplapHozzadasArInput;
+
+    @FXML
+    // Alaplap almenü -> Új Hozzáadás gomb -> Hozzáadás gomb Action        
+    void popUpAlaplapHozzaadasBttAction(ActionEvent event) {
+        try
+        {
+        dataAlaplap.add(new Alaplap(
+                AlaplapHozzadasNevInput.getText(),
+                AlaplapHozzadasFormatumInput.getText(),
+                AlaplapHozzadasProcesszorFogInput.getText(),
+                AlaplapHozzadasmemoriaFogInput.getText(),               
+                AlaplapHozzadasArInput.getText()));
+        
+        AlaplapHozzadasNevInput.clear();
+        AlaplapHozzadasFormatumInput.clear();
+        AlaplapHozzadasProcesszorFogInput.clear();
+        AlaplapHozzadasmemoriaFogInput.clear();             
+        AlaplapHozzadasArInput.clear();
+        
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        AlaplapPane.setOpacity(1);
+        AlaplapPane.setDisable(false); 
+        popUpAlaplapHozzadasPane.setVisible(false);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    // Alaplap almenü -> Új Hozzáadás gomb -> Mégse gomb Action
+    void popUpAlaplapMegseBttAction(ActionEvent event) {
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        AlaplapPane.setOpacity(1);
+        AlaplapPane.setDisable(false); 
+        popUpAlaplapHozzadasPane.setVisible(false);
+    }
+    
+    @FXML
+    // Alaplap almenü -> Új Hozzáadás gomb Action
+    void ujHozzadasAzAlaplaphoz(ActionEvent event) {
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true); 
+        
+        AlaplapPane.setOpacity(0.3);
+        AlaplapPane.setDisable(true); 
+        popUpAlaplapHozzadasPane.setVisible(true);
+    }
+
+    @FXML
+    // Alaplap almenü -> Exportálás gomb Action
+    void exportalasAzAlaplaphoz(ActionEvent event) {
+
+    }
+    
     @FXML
     //Gépház almenü -> Exportalás gomb Action        
     void exportalasAGephazhoz(ActionEvent event) {
@@ -108,7 +186,7 @@ public class FXMLController implements Initializable {
         if(fileNev != null && !fileNev.equals("") )
         {              
             PdfGeneration pdfCreator=new PdfGeneration();
-            pdfCreator.pdfGenration(fileNev,data);
+            pdfCreator.pdfGenration(fileNev,dataGephaz);
         }
         menuPane.setOpacity(1);
         menuPane.setDisable(false);
@@ -122,7 +200,7 @@ public class FXMLController implements Initializable {
     void popUpGephazHozzaadasBttAction(ActionEvent event) {
         try
         {
-        data.add(new Gephaz(
+        dataGephaz.add(new Gephaz(
                 gephazHozzadasNevInput.getText(),
                 gephazHozzadasAlaplaptipusInput.getText(),
                 gephazHozzadasVentillatorokszamaInput.getText(),
@@ -169,9 +247,13 @@ public class FXMLController implements Initializable {
     }
     
     
+    private final ObservableList<Alaplap> dataAlaplap=
+            FXCollections.observableArrayList(
+            new Alaplap("a","b","3","v","f"),
+            new Alaplap("a","b","3","v","f"),
+            new Alaplap("a","b","3","v","f"));
     
-    
-    private final ObservableList<Gephaz> data=
+    private final ObservableList<Gephaz> dataGephaz=
             FXCollections.observableArrayList(
             new Gephaz("1 gép neve","1 gép alaplaptipusa","3","sssd ehlx 3","20"),
             new Gephaz("2 gép neve","2 gép alaplaptipusa","3","sssd ehlx 3","20"),
@@ -284,8 +366,112 @@ public class FXMLController implements Initializable {
         hazTable.getColumns().addAll(nevCol,alaplaptipusCol,
                 beepitetVentilatorokSzamaCol,/*szinCol,*/ssdhelyCol,arCol);
         
-        hazTable.setItems(data);
+        hazTable.setItems(dataGephaz);
     } 
+    
+    public void setTableDataAlaplap(){
+        try{
+        TableColumn nevCol= new TableColumn("Alaplap:");
+        nevCol.setMinWidth(100);
+        nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nevCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("nev"));
+        
+        nevCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                        ((Alaplap) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setNev(t.getNewValue());
+                    }
+                }
+        );
+        
+        
+         TableColumn formatumCol= new TableColumn("Formatum:");
+        formatumCol.setMinWidth(100);
+        formatumCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        formatumCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("formatum"));
+        
+        formatumCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                        ((Alaplap) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setAlaplaptipus(t.getNewValue());
+                    }
+                }
+        );
+        
+         TableColumn procFogCol= new TableColumn("Processzor :");
+        procFogCol.setMinWidth(100);
+        procFogCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        procFogCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("proceszorFog"));
+        
+         procFogCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                        ((Alaplap) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setBeepitetVentilatorokSzama(t.getNewValue());
+                    }
+                }
+        );
+        
+         TableColumn memoriaFogCol= new TableColumn("Memoria:");
+        memoriaFogCol.setMinWidth(100);
+        memoriaFogCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        memoriaFogCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("memoriaFog"));
+        
+        memoriaFogCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                        ((Alaplap) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setSsdhely(t.getNewValue());
+                    }
+                }
+        );
+        
+         TableColumn arCol= new TableColumn("Ár");
+        arCol.setMinWidth(100);
+        arCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        arCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("ar"));
+        
+        arCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                        ((Alaplap) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())
+                        ).setAr(t.getNewValue());
+                    }
+                }
+        );
+        
+        alaplapTable.getColumns().addAll(nevCol,formatumCol,
+                procFogCol,memoriaFogCol,arCol);
+        
+        alaplapTable.setItems(dataAlaplap);
+        }
+        catch(Exception e){
+            System.out.println(".setTableDataAlaplap()");
+            e.printStackTrace();
+        }
+    }
     
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");
@@ -330,7 +516,7 @@ public class FXMLController implements Initializable {
                                 try
                                 {   
                                   hazPane.setVisible(true);
-                                  exportPane.setVisible(false);
+                                  AlaplapPane.setVisible(false);
                                   starterPane.setVisible(false);
                                 }
                                 catch(Exception e){}
@@ -339,7 +525,7 @@ public class FXMLController implements Initializable {
                             case MENU_EXPORT:
                                 try
                                 {   
-                                  exportPane.setVisible(true);
+                                  AlaplapPane.setVisible(true);
                                   hazPane.setVisible(false);
                                   starterPane.setVisible(false);
                                 }
@@ -361,6 +547,7 @@ public class FXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setTableDataGephaz();
+        setTableDataAlaplap();
         setMenuData();
         setStarterPic();
         
