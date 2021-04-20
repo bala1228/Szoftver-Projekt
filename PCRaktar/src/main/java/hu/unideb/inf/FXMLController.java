@@ -78,6 +78,7 @@ public class FXMLController implements Initializable {
     private Pane popUpGephazExportPane;
 
     @FXML
+    //Gépház almenü -> Exportalás gomb Action        
     void exportalasAGephazhoz(ActionEvent event) {
         menuPane.setOpacity(0.3);
         menuPane.setDisable(true); 
@@ -88,6 +89,7 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
+    //Gépház almenü -> Exportálás gomb -> Exportálás popup -> Mégse gomb Action        
     void popUpGephazExportalasMegseBttAction(ActionEvent event) {
         menuPane.setOpacity(1);
         menuPane.setDisable(false);
@@ -97,6 +99,7 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
+    //Gépház almenü -> Exportálás gomb -> Exportálás popup -> PDF Mentés gomb Action        
     void popUpGephazExportalasPDFBttAction(ActionEvent event) {
                
         String fileNev=gephazExportFileNeveInput.getText();
@@ -115,6 +118,7 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
+    //Gépház almenü -> Hozzáadás gomb -> Hozzáadás popUp -> Hozzáadás gomb Action        
     void popUpGephazHozzaadasBttAction(ActionEvent event) {
         try
         {
@@ -144,6 +148,7 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
+    //Gépház almenü -> Hozzáadás gomb -> Hozzáadás popUp -> Mégse gomb Action  
     void popUpGephazMegseBttAction(ActionEvent event) {
         menuPane.setOpacity(1);
         menuPane.setDisable(false);
@@ -153,6 +158,7 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
+    //Gépház almenü -> Hozzáadás gomb Action        
     void ujHozzadasAGephazhoz(ActionEvent event) {
         menuPane.setOpacity(0.3);
         menuPane.setDisable(true); 
@@ -178,7 +184,7 @@ public class FXMLController implements Initializable {
         
     }
     
-    public void setTableData(){
+    public void setTableDataGephaz(){
         TableColumn nevCol= new TableColumn("Gépház:");
         nevCol.setMinWidth(100);
         nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -291,8 +297,6 @@ public class FXMLController implements Initializable {
         
         nodeItemA.setExpanded(true);
         
-     //   Node gephaznodes = new ImageView( new Image(getClass().getResourceAsStream("/raketa.png")));
-     //   Node exportnodes = new ImageView( new Image(getClass().getResourceAsStream("/kerdojel.png")));
         TreeItem<String> nodeItemA1= new TreeItem<>(MENU_GEPHAZAK/*,gephaznodes*/);
         TreeItem<String> nodeItemA2= new TreeItem<>(MENU_EXPORT/*,exportnodes*/);
        
@@ -356,7 +360,7 @@ public class FXMLController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        setTableData();
+        setTableDataGephaz();
         setMenuData();
         setStarterPic();
         
