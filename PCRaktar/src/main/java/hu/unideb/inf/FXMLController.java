@@ -33,7 +33,8 @@ public class FXMLController implements Initializable {
    private final String MENU_EXIT="Kilépés";
    private final String MENU_GEPHAZAK="Gépházak"; 
    private final String MENU_PC_RESZEK="PC részek"; 
-   private final String MENU_EXPORT="Alaplapok";
+   private final String MENU_ALAPLAP="Alaplapok";
+   private final String MENU_MEREVLEMEZ="Merevlemezek";
    
    @FXML
     private AnchorPane BASE;
@@ -523,9 +524,10 @@ public class FXMLController implements Initializable {
         nodeItemA.setExpanded(true);
         
         TreeItem<String> nodeItemA1= new TreeItem<>(MENU_GEPHAZAK/*,gephaznodes*/);
-        TreeItem<String> nodeItemA2= new TreeItem<>(MENU_EXPORT/*,exportnodes*/);
+        TreeItem<String> nodeItemA2= new TreeItem<>(MENU_ALAPLAP/*,exportnodes*/);
+        TreeItem<String> nodeItemA3= new TreeItem<>(MENU_MEREVLEMEZ/*,exportnodes*/);
        
-        nodeItemA.getChildren().addAll(nodeItemA1,nodeItemA2);
+        nodeItemA.getChildren().addAll(nodeItemA1,nodeItemA2,nodeItemA3);
         treeItemroot1.getChildren().addAll( nodeItemA, nodeItemB);
         
         menuPane.getChildren().add(treeView);
@@ -561,7 +563,7 @@ public class FXMLController implements Initializable {
                                 catch(Exception e){}
                                 break;
                              
-                            case MENU_EXPORT:
+                            case MENU_ALAPLAP:
                                 try
                                 {   
                                   AlaplapPane.setVisible(true);
@@ -569,8 +571,16 @@ public class FXMLController implements Initializable {
                                   starterPane.setVisible(false);
                                 }
                                 catch(Exception e){}
-                                break;    
-                            
+                                break;
+                                
+                            case MENU_MEREVLEMEZ:
+                                try{
+                                    
+                                }
+                                catch(Exception e){
+                                    
+                                }
+                                break;
                             case MENU_EXIT:
                                 System.exit(0);
                                 break;
