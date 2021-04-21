@@ -48,30 +48,30 @@ public class Merevlemez {
         return this.nev.get() ; 
     }
 
-    public void setFormatum(String alaplaptipus)
+    public void setCache(String alaplaptipus)
     {
         this.cache.set(alaplaptipus);
     }
 
-    public String getFomatum() {
+    public String getCache() {
         return this.cache.get() ; 
     }
     
-    public void setProceszorFog(String beepitetVentilatorokSzama)
+    public void setCsatoloFelulet(String beepitetVentilatorokSzama)
     {
         this.csatoloFelulet.set(beepitetVentilatorokSzama);
     }
 
-    public String getProceszorFog() {
+    public String getCsatoloFelulet() {
         return this.csatoloFelulet.get() ; 
     }
     
-    public void setMemoriaFog(String ssdhely)
+    public void setKapacitas(String ssdhely)
     {
         this.kapacitas.set(ssdhely);
     }
 
-    public String getMemoriaFog() {
+    public String getKapacitas() {
         return this.kapacitas.get() ; 
     }
     
