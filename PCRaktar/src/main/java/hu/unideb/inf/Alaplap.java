@@ -41,30 +41,30 @@ public class Alaplap {
         return this.nev.get() ; 
     }
 
-    public void setAlaplaptipus(String alaplaptipus)
+    public void setFormatum(String alaplaptipus)
     {
         this.formatum.set(alaplaptipus);
     }
 
-    public String getAlaplaptipus() {
+    public String getFomatum() {
         return this.formatum.get() ; 
     }
     
-    public void setBeepitetVentilatorokSzama(String beepitetVentilatorokSzama)
+    public void setProceszorFog(String beepitetVentilatorokSzama)
     {
         this.proceszorFog.set(beepitetVentilatorokSzama);
     }
 
-    public String getBeepitetVentilatorokSzama() {
+    public String getProceszorFog() {
         return this.proceszorFog.get() ; 
     }
     
-    public void setSsdhely(String ssdhely)
+    public void setMemoriaFog(String ssdhely)
     {
         this.memoriaFog.set(ssdhely);
     }
 
-    public String getSsdhely() {
+    public String getMemoriaFog() {
         return this.memoriaFog.get() ; 
     }
     

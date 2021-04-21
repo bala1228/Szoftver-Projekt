@@ -97,6 +97,50 @@ public class FXMLController implements Initializable {
 
     @FXML
     private TextField AlaplapHozzadasArInput;
+    
+    @FXML
+    private Pane popUpAlaplapExportPane;
+
+    @FXML
+    private TextField alaplapExportFileNeveInput;
+
+     @FXML
+     //Alaplap almenü -> Exportalás gomb Action    
+    void exportalasAzAlaplaphoz(ActionEvent event) {
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true); 
+        
+        AlaplapPane.setOpacity(0.3);
+        AlaplapPane.setDisable(true); 
+        popUpAlaplapExportPane.setVisible(true);
+    }
+
+    @FXML
+    //Alaplap almenü -> Exportalás gomb -> popUp -> Mégse gomb Action        
+    void popUpAlaplapExportalasMegseBttAction(ActionEvent event) {
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        AlaplapPane.setOpacity(1);
+        AlaplapPane.setDisable(false); 
+        popUpAlaplapExportPane.setVisible(false);
+    }
+
+    @FXML
+    void popUpAlaplapExportalasPDFBttAction(ActionEvent event) {
+        String fileNev=alaplapExportFileNeveInput.getText();
+        fileNev = fileNev.replaceAll("\\s+","");
+        
+        if(fileNev != null && !fileNev.equals("") )
+        {              
+            AlplapPdfGeneration pdfCreator=new AlplapPdfGeneration();
+           pdfCreator.AlaplappdfGenration(fileNev,dataAlaplap);
+        }
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        AlaplapPane.setOpacity(1);
+        AlaplapPane.setDisable(false); 
+        popUpAlaplapExportPane.setVisible(false);
+    }
 
     @FXML
     // Alaplap almenü -> Új Hozzáadás gomb -> Hozzáadás gomb Action        
@@ -149,11 +193,6 @@ public class FXMLController implements Initializable {
         popUpAlaplapHozzadasPane.setVisible(true);
     }
 
-    @FXML
-    // Alaplap almenü -> Exportálás gomb Action
-    void exportalasAzAlaplaphoz(ActionEvent event) {
-
-    }
     
     @FXML
     //Gépház almenü -> Exportalás gomb Action        
@@ -403,7 +442,7 @@ public class FXMLController implements Initializable {
                     {
                         ((Alaplap) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
-                        ).setAlaplaptipus(t.getNewValue());
+                        ).setFormatum(t.getNewValue());
                     }
                 }
         );
@@ -421,7 +460,7 @@ public class FXMLController implements Initializable {
                     {
                         ((Alaplap) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
-                        ).setBeepitetVentilatorokSzama(t.getNewValue());
+                        ).setProceszorFog(t.getNewValue());
                     }
                 }
         );
@@ -439,7 +478,7 @@ public class FXMLController implements Initializable {
                     {
                         ((Alaplap) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())
-                        ).setSsdhely(t.getNewValue());
+                        ).setMemoriaFog(t.getNewValue());
                     }
                 }
         );

@@ -132,6 +132,24 @@
                            </padding>
                         </VBox>
                      </children>
+                  </Pane>
+                  <Pane fx:id="popUpAlaplapExportPane" layoutX="72.0" layoutY="32.0" prefHeight="354.0" prefWidth="364.0" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#95f5dd" height="354.0" stroke="BLACK" strokeType="INSIDE" width="365.0" />
+                        <TextField fx:id="alaplapExportFileNeveInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Button layoutX="202.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpAlaplapExportalasPDFBttAction" text="PDF Mentés" />
+                        <Button layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpAlaplapExportalasMegseBttAction" text="Mégse" />
+                        <Text layoutX="65.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exportálás PDF-be">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="150.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fájl neve:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
                   </Pane>                
                </children>
           </AnchorPane>
