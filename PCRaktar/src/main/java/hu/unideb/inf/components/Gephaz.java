@@ -22,6 +22,8 @@ public class Gephaz
     
     
     
+    
+    
     public Gephaz() {
         this.id = new SimpleStringProperty("");
         this.name = new SimpleStringProperty("");

@@ -69,6 +69,8 @@ public class PdfGeneration {
                 table.addCell(actualGephaz.getAr());
             }
             
+            
+            
             document.add(table);
             
             Chunk alairas = new Chunk("\n\n\n Sok szeretettel a mikúlástól");           
