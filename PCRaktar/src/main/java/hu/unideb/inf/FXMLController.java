@@ -289,15 +289,21 @@ public class FXMLController implements Initializable {
     
     private final ObservableList<Alaplap> dataAlaplap=
             FXCollections.observableArrayList(
-            new Alaplap("a","b","3","v","f"),
-            new Alaplap("a","b","3","v","f"),
-            new Alaplap("a","b","3","v","f"));
+            new Alaplap("MSI B450 TOMAHAWK MAX","ATX","Socket AM4","DDR4 - 4db","32 690Ft"),
+            new Alaplap("ASUS ROG STRIX B450-F GAMING","ATX","Socket AM4","DDR4 - 4db","39 900Ft"),
+            new Alaplap("ASRock H110 Pro BTC+","ATX","Socket 1151","DDR4 - 2db","15 990Ft"),
+            new Alaplap("MSI Z490-A PRO","ATX","Socket 1200","DDR4 - 4db","57 380Ft"),
+            new Alaplap("ASUS PRIME H310M-E R2.0/CSM","microATX","Socket 1151","DDR4 - 2db","18 746Ft"));
     
     private final ObservableList<Gephaz> dataGephaz=
             FXCollections.observableArrayList(
-            new Gephaz("1 gép neve","1 gép alaplaptipusa","3","sssd ehlx 3","20"),
-            new Gephaz("2 gép neve","2 gép alaplaptipusa","3","sssd ehlx 3","20"),
-            new Gephaz("3 gép neve","3 gép alaplaptipusa","3","sssd ehlx 3","20"));
+            new Gephaz("Aerocool PGS ORE SATURN","ATX","3","4","12 345Ft"),
+            new Gephaz("be quiet! Pure Base 500DX","ATX","2","5","36 430Ft"),
+            new Gephaz("NZXT H510","ATX","2","3","24 890Ft"),
+            new Gephaz("CHIEFTEC CI-02B-OP","Micro ATX","3","3","13 317Ft"),
+            new Gephaz("Corsair 275R Airflow TG","Mini ATX","4","5","27 790Ft"),
+            new Gephaz("SilentiumPC Signum","ATX","3","5","17 499Ft"));
+    
     
     public void setStarterPic(){
         Image image = new Image("https://e7.pngegg.com/pngimages/534/1005/png-clipart-computer-monitors-personal-computer-output-device-desktop-computers-multimedia-computer-desktop-pc-computer-computer-monitor-accessory.png"); 
