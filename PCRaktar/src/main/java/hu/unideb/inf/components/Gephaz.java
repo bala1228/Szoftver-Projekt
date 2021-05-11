@@ -1,5 +1,5 @@
 
-package hu.unideb.inf;
+package hu.unideb.inf.components;
 
 
 import javafx.beans.property.SimpleStringProperty;

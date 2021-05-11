@@ -5,6 +5,7 @@
  */
 package hu.unideb.inf;
 
+import hu.unideb.inf.components.Alaplap;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;

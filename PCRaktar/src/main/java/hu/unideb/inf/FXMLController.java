@@ -1,5 +1,7 @@
 package hu.unideb.inf;
 
+import hu.unideb.inf.components.Alaplap;
+import hu.unideb.inf.components.Gephaz;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;

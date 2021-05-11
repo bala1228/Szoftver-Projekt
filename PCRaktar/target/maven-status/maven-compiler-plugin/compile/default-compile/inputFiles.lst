@@ -1,10 +1,10 @@
-E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\Alaplap.java
 E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\FXMLController.java
 E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\MerevlemezPdfGeneration.java
 E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\Database.java
 E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\Db.java
-E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\Merevlemez.java
-E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\Gephaz.java
+E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\components\Gephaz.java
 E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\PdfGeneration.java
 E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\AlplapPdfGeneration.java
+E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\components\Alaplap.java
 E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\MainApp.java
+E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\src\main\java\hu\unideb\inf\components\Merevlemez.java
