@@ -74,6 +74,7 @@ public class Db_gephaz
                 while (rs.next()){
                     Gephaz actualGephaz = new Gephaz(rs.getInt("id"), rs.getString("name"), rs.getString("formfactor"), rs.getInt("vents"), rs.getInt("storage"), rs.getInt("GPULength"), rs.getInt("price"));
                     users.add(actualGephaz);
+                    
                 }
             } catch (SQLException ex) {
                 System.out.println("Valami baj van az adatok kiolvasásakor");
