@@ -2,83 +2,102 @@
 package hu.unideb.inf.components;
 
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 
     
 public class Gephaz
 {
-    private final SimpleStringProperty nev;
-    private final SimpleStringProperty alaplaptipus;
-    private final SimpleStringProperty beepitetVentilatorokSzama;
-    private final SimpleStringProperty ssdhely;
-    private final SimpleStringProperty ar;
-
+    private final SimpleStringProperty id;
+    private final SimpleStringProperty name;
+    private final SimpleStringProperty formfactor;
+    private final SimpleStringProperty vents;
+    private final SimpleStringProperty storage;
+    private final SimpleStringProperty GPULength;
+    private final SimpleStringProperty price;
+    
+    
+    
+    
+    
+    
     public Gephaz() {
-        this.nev = new SimpleStringProperty("");
-        this.alaplaptipus = new SimpleStringProperty( "");
-        this.beepitetVentilatorokSzama = new SimpleStringProperty("");
-        this.ssdhely = new SimpleStringProperty("");
-        this.ar = new SimpleStringProperty("");
+        this.id = new SimpleStringProperty("");
+        this.name = new SimpleStringProperty("");
+        this.formfactor = new SimpleStringProperty("");
+        this.vents = new SimpleStringProperty("");
+        this.storage= new SimpleStringProperty("");
+        this.GPULength= new SimpleStringProperty("");
+        this.price = new SimpleStringProperty("");
     }
     
     
-    public Gephaz(String nev, String alaplaptipus, String beepitetVentilatorokSzama,
-                   String ssdhely, String ar) {
-        this.nev = new SimpleStringProperty(nev);
-        this.alaplaptipus = new SimpleStringProperty( alaplaptipus);
-        this.beepitetVentilatorokSzama = new SimpleStringProperty(beepitetVentilatorokSzama);
-       // this.szin = new SimpleStringProperty(szin);
-        this.ssdhely = new SimpleStringProperty(ssdhely);
-        this.ar = new SimpleStringProperty(ar);
+    public Gephaz(String name , String formfactor, String vents, String storage, String GPULength, String price) {
+        this.id = new SimpleStringProperty("");
+        this.name = new SimpleStringProperty(name);
+        this.formfactor = new SimpleStringProperty(formfactor);
+        this.vents = new SimpleStringProperty(vents);
+        this.storage= new SimpleStringProperty(storage);
+        this.GPULength= new SimpleStringProperty(GPULength);
+        this.price = new SimpleStringProperty(price);
     }
 
     
     
-    public void setNev(String nev)
+    public void setName(String name)
     {
-        this.nev.set(nev);
+        this.name.set(name);
     }
 
     public String getNev() {
-        return this.nev.get() ; 
-    }
-
-    public void setAlaplaptipus(String alaplaptipus)
-    {
-        this.alaplaptipus.set(alaplaptipus);
-    }
-
-    public String getAlaplaptipus() {
-        return this.alaplaptipus.get() ; 
+        return this.name.get() ; 
     }
     
-    public void setBeepitetVentilatorokSzama(String beepitetVentilatorokSzama)
+     public void setFormfactor(String formfactor)
     {
-        this.beepitetVentilatorokSzama.set(beepitetVentilatorokSzama);
+        this.formfactor.set(formfactor);
     }
 
-    public String getBeepitetVentilatorokSzama() {
-        return this.beepitetVentilatorokSzama.get() ; 
+    public String getFormfactor() {
+        return this.formfactor.get() ; 
     }
     
-    public void setSsdhely(String ssdhely)
+    public void setVents(String vents)
     {
-        this.ssdhely.set(ssdhely);
+        this.vents.set(vents);
     }
 
-    public String getSsdhely() {
-        return this.ssdhely.get() ; 
+    public String getVents() {
+        return this.vents.get() ; 
     }
     
-    public void setAr(String ar)
+     public void setStorage(String storage)
     {
-        this.ar.set(ar);
+        this.storage.set(storage);
     }
 
-    public String getAr() {
-        return this.ar.get() ; 
+    public String getStorage() {
+        return this.storage.get() ; 
     }
     
- 
+    public void setGPULength(String GPULength)
+    {
+        this.GPULength.set(GPULength);
+    }
+
+    public String getGPULength() {
+        return this.GPULength.get() ; 
+    }
+    
+     public void setPrice(String price)
+    {
+        this.price.set(price);
+    }
+
+    public String getPrice() {
+        return this.price.get() ; 
+    }
+
+    
 }
