@@ -2,7 +2,7 @@
 package hu.unideb.inf.components;
 
 
-import javafx.beans.property.SimpleIntegerProperty;
+
 import javafx.beans.property.SimpleStringProperty;
 
 
@@ -45,14 +45,21 @@ public class Gephaz
         this.price = new SimpleStringProperty(price);
     }
 
-    
+     public void setID(String id)
+    {
+        this.name.set(id);
+    }
+
+    public String getID() {
+        return this.id.get() ; 
+    }
     
     public void setName(String name)
     {
         this.name.set(name);
     }
 
-    public String getNev() {
+    public String getName() {
         return this.name.get() ; 
     }
     
