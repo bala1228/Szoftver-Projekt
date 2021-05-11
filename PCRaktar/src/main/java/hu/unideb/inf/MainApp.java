@@ -39,33 +39,7 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         
-        String jdbcUrl = "jdbc:sqlite:smfdb.db";
-         try 
-        {
-            Connection connection = DriverManager.getConnection(jdbcUrl);
-            String sql = "SELECT * FROM gephaz";
-            
-            Statement statement = (Statement) connection.createStatement();
-            ResultSet result = statement.executeQuery(sql);
-            
-            while(result.next())
-            {
-                int ID = result.getInt("id");
-                String name = result.getString("name");
-                String formfactor = result.getString("formfactor");
-                int vents = result.getInt("vents");
-                int storage = result.getInt("storage");
-                int GPULength = result.getInt("GPULength");
-                int price = result.getInt("price");
-                
-                System.out.println(ID + " | " + name + " | " + formfactor + " | " + vents +" db" + " | " + storage + " db" + " | " + GPULength + " cm" + " | " + price + " Ft");
-            }
-            
-        } 
-        catch (SQLException ex) 
-        {
-            System.out.println("Error connection to SQL database");
-        }
+      
          
          launch(args);
     }
