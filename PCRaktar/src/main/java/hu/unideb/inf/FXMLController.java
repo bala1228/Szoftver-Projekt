@@ -43,6 +43,9 @@ public class FXMLController implements Initializable {
    private final String MENU_PC_RESZEK="PC részek"; 
    private final String MENU_ALAPLAP="Alaplapok";
    private final String MENU_MEREVLEMEZ="Merevlemezek";
+   private final String MENU_MEMORIA="Memória";
+   private final String MENU_PROCESSZOR="Processzor";
+   private final String MENU_VIDEOKARTYA="Videokártya";
    
    @FXML
     private AnchorPane BASE;
@@ -371,8 +374,11 @@ public class FXMLController implements Initializable {
         TreeItem<String> nodeItemA1= new TreeItem<>(MENU_GEPHAZAK/*,gephaznodes*/);
         TreeItem<String> nodeItemA2= new TreeItem<>(MENU_ALAPLAP/*,exportnodes*/);
         TreeItem<String> nodeItemA3= new TreeItem<>(MENU_MEREVLEMEZ/*,exportnodes*/);
+        TreeItem<String> nodeItemA4= new TreeItem<>(MENU_MEMORIA/*,exportnodes*/);
+        TreeItem<String> nodeItemA5= new TreeItem<>(MENU_PROCESSZOR/*,exportnodes*/);
+        TreeItem<String> nodeItemA6= new TreeItem<>(MENU_VIDEOKARTYA/*,exportnodes*/);
        
-        nodeItemA.getChildren().addAll(nodeItemA1,nodeItemA2,nodeItemA3);
+        nodeItemA.getChildren().addAll(nodeItemA1,nodeItemA2,nodeItemA3,nodeItemA4, nodeItemA5,nodeItemA6);
         treeItemroot1.getChildren().addAll( nodeItemA, nodeItemB);
         
         menuPane.getChildren().add(treeView);
@@ -406,6 +412,42 @@ public class FXMLController implements Initializable {
                                 }
                                 catch(Exception e){}
                                 break;
+                                
+                            case MENU_MEREVLEMEZ:
+                                try
+                                {   
+                                  hazPane.setVisible(true);
+                                  starterPane.setVisible(false);
+                                }
+                                catch(Exception e){}
+                                break; 
+                                
+                            case MENU_MEMORIA:
+                                try
+                                {   
+                                  hazPane.setVisible(true);
+                                  starterPane.setVisible(false);
+                                }
+                                catch(Exception e){}
+                                break; 
+                            
+                            case MENU_PROCESSZOR:
+                                try
+                                {   
+                                  hazPane.setVisible(true);
+                                  starterPane.setVisible(false);
+                                }
+                                catch(Exception e){}
+                                break; 
+                                
+                            case MENU_VIDEOKARTYA:
+                                try
+                                {   
+                                  hazPane.setVisible(true);
+                                  starterPane.setVisible(false);
+                                }
+                                catch(Exception e){}
+                                break;                
            
                             case MENU_EXIT:
                                 System.exit(0);
