@@ -34,12 +34,15 @@ public class Db_gephaz
             ex.printStackTrace();
         }            
          
-        if (conn !=null){
+        if (conn !=null)
+        {
             try
             {
               creatStatement= conn.createStatement();
+
               System.out.println("Minden rendben creatStatementnél ");
             } catch (SQLException ex)
+
             {
              System.out.println("Valami bajvan a creatStatementnél ");
              ex.printStackTrace();
@@ -53,6 +56,7 @@ public class Db_gephaz
         }    
             
         }
+
         
          try
             {
@@ -80,11 +84,13 @@ public class Db_gephaz
                 while (rs.next()){
                     Gephaz actualGephaz = new Gephaz(rs.getInt("id"), rs.getString("name"), rs.getString("formfactor"), rs.getString("vents"), rs.getString("storage"), rs.getString("GPULength"), rs.getString("price"));
                     gep.add(actualGephaz);
+
                 }
             } catch (SQLException ex) {
                 System.out.println("Valami baj van az adatok kiolvasásakor");
                 ex.printStackTrace();
             }
+
           return gep;
     }  
 
