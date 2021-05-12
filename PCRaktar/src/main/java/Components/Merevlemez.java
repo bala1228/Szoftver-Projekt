@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Components;
 
 import javafx.beans.property.SimpleStringProperty;
 
-/**
- *
- * @author Felhasználó(user)
- */
 public class Merevlemez {
     private final SimpleStringProperty nev;
     private final SimpleStringProperty cache;

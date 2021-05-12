@@ -1,11 +1,7 @@
 
 package Components;
 
-
-
 import javafx.beans.property.SimpleStringProperty;
-
-
     
 public class Gephaz
 {

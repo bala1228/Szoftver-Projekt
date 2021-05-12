@@ -1,12 +1,8 @@
 
 package Components;
 
-
-
 import javafx.beans.property.SimpleStringProperty;
-
-
-    
+   
 public class Processzor
 {
     private final SimpleStringProperty id;

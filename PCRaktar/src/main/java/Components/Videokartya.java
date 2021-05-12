@@ -3,53 +3,53 @@ package Components;
 
 import javafx.beans.property.SimpleStringProperty;
     
-public class Memoria
+public class Videokartya
 {
     private final SimpleStringProperty id;
+    private final SimpleStringProperty manifacture;
     private final SimpleStringProperty name;
     private final SimpleStringProperty slot;
-    private final SimpleStringProperty size;
+    private final SimpleStringProperty vram;
     private final SimpleStringProperty frequency;
-    private final SimpleStringProperty timing;
-    private final SimpleStringProperty amount;
+    private final SimpleStringProperty length;
     private final SimpleStringProperty price;
     
-    public Memoria() 
+    public Videokartya() 
     {
         
+        this.manifacture = new SimpleStringProperty("");
         this.name = new SimpleStringProperty("");
         this.slot = new SimpleStringProperty("");
-        this.size = new SimpleStringProperty("");
+        this.vram= new SimpleStringProperty("");
         this.frequency= new SimpleStringProperty("");
-        this.timing= new SimpleStringProperty("");
-        this.amount= new SimpleStringProperty("");
+        this.length= new SimpleStringProperty("");
         this.price = new SimpleStringProperty("");
         this.id = new SimpleStringProperty("");
     }
     
     
-    public Memoria(Integer id, String name , String slot, String size, String frequency, String timing, String amount, String price) 
+    public Videokartya(Integer id, String manifacture , String name, String slot, String vram, String frequency, String length, String price) 
     {
         
         this.name = new SimpleStringProperty(name);
-        this.slot = new SimpleStringProperty(slot);
-        this.size = new SimpleStringProperty(size);
+        this.manifacture = new SimpleStringProperty(manifacture);
+        this.slot= new SimpleStringProperty(slot);
+        this.vram= new SimpleStringProperty(vram);
         this.frequency= new SimpleStringProperty(frequency);
-        this.timing= new SimpleStringProperty(timing);
-        this.amount= new SimpleStringProperty(amount);
+        this.length = new SimpleStringProperty(length);
         this.price = new SimpleStringProperty(price);
         this.id = new SimpleStringProperty(String.valueOf(id));
     }
     
-    public Memoria(String name , String slot, String size, String frequency, String timing, String amount, String price) 
+    public Videokartya(String manifacture , String name, String slot, String vram, String frequency, String length, String price) 
     {
         
-        this.name = new SimpleStringProperty(name);
-        this.slot = new SimpleStringProperty(slot);
-        this.size = new SimpleStringProperty(size);
+       this.name = new SimpleStringProperty(name);
+        this.manifacture = new SimpleStringProperty(manifacture);
+        this.slot= new SimpleStringProperty(slot);
+        this.vram= new SimpleStringProperty(vram);
         this.frequency= new SimpleStringProperty(frequency);
-        this.timing= new SimpleStringProperty(timing);
-        this.amount= new SimpleStringProperty(amount);
+        this.length = new SimpleStringProperty(length);
         this.price = new SimpleStringProperty(price);
         this.id = new SimpleStringProperty("");
     }
@@ -64,6 +64,16 @@ public class Memoria
         return this.id.get(); 
     }
     
+    public void setManifacture(String manifacture)
+    {
+        this.manifacture.set(manifacture);
+    }
+
+    public String getManifacture() 
+    {
+        return this.manifacture.get(); 
+    }
+     
     public void setName(String fname)
     {
         name.set(fname);
@@ -85,17 +95,16 @@ public class Memoria
     {
         return this.slot.get(); 
     }
-    
-    public void setSize(String size)
+     
+     public void setVram(String vram)
     {
-        this.size.set(size);
+        this.vram.set(vram);
     }
 
-    public String getSize() 
-    {
-        return this.size.get(); 
+    public String getVram() {
+        return this.vram.get(); 
     }
-       
+        
     public void setFrequency(String frequency)
     {
         this.frequency.set(frequency);
@@ -106,22 +115,13 @@ public class Memoria
         return this.frequency.get(); 
     }
     
-     public void setTiming(String timing)
+    public void setLength(String length)
     {
-        this.timing.set(timing);
+        this.length.set(length);
     }
 
-    public String getTiming() {
-        return this.timing.get(); 
-    }
-    
-    public void setAmount(String amount)
-    {
-        this.amount.set(amount);
-    }
-
-    public String getAmount() {
-        return this.amount.get() ; 
+    public String getLength() {
+        return this.length.get() ; 
     }
     
      public void setPrice(String price)
