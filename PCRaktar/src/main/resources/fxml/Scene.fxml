@@ -27,6 +27,9 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <StackPane id="starterPane" fx:id="starterPane" prefHeight="541.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  
+                  <!-- ház -->
+                  
                   <Pane id="hazPane" fx:id="hazPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>                       
                         <TableView id="hazTable" fx:id="hazTable" editable="true" prefHeight="465.0" prefWidth="717.0">
@@ -92,7 +95,90 @@
                            </font>
                         </Text>
                      </children>
-                  </Pane>                
+                  </Pane>
+                  
+                   
+                                  
+                                                 
+                                                                
+                                                                               
+                <!--alaplap-->                                                                      
+                                                                                                             
+                    <Pane id="hazPane" fx:id="hazPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>                       
+                        <TableView id="hazTable" fx:id="hazTable" editable="true" prefHeight="465.0" prefWidth="717.0">
+                            <placeholder>
+                              <javafx.scene.control.Label text="Nincs adat." />
+                            </placeholder>    
+                          <columns>
+                            
+                          </columns>
+                        </TableView>
+                        <Button id="HozzadasGephazBtt" fx:id="HozzadasGephazBtt" layoutX="480.0" layoutY="474.0" mnemonicParsing="false" onAction="#ujHozzadasAGephazhoz" text="Hozzáadás" />
+                        <Button fx:id="ExportálásGephazBtt" layoutX="398.0" layoutY="474.0" mnemonicParsing="false" onAction="#exportalasAGephazhoz" text="Exportálás" />
+                     </children>
+                  </Pane>
+                  <Pane id="popUpGephazPane" fx:id="popUpGephazHozzadasPane" layoutX="104.0" layoutY="37.0" prefHeight="399.0" prefWidth="355.0" visible="false">
+                     <children>
+                        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#b8cee3e8" height="399.0" stroke="BLACK" strokeType="INSIDE" width="355.0" />
+                        <Button layoutX="232.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpGephazHozzaadasBttAction" text="Hozzádás" />
+                        <Button layoutX="56.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpGephazMegseBttAction" text="Mégse" />
+                        <VBox layoutX="22.0" layoutY="37.0" prefHeight="200.0" prefWidth="105.0" spacing="20.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formfactor:" wrappingWidth="66.771484375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vents:" wrappingWidth="140.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Storage:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GPULength:" wrappingWidth="74.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="54.13671875" />
+                           </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </VBox>
+                        <Text layoutX="103.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Új gépház hozzáadása" />
+                        <VBox layoutX="182.0" layoutY="46.0" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="gephazHozzadasNameInput" />
+                              <TextField fx:id="gephazHozzadasFormfactorInput" />
+                              <TextField fx:id="gephazHozzadasVentsInput" />
+                              <TextField fx:id="gephazHozzadasStorageInput" />
+                              <TextField fx:id="gephazHozzadasGPULengthInput" />
+                              <TextField fx:id="gephazHozzadasPriceInput" />
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="popUpGephazExportPane" layoutX="62.0" layoutY="22.0" prefHeight="354.0" prefWidth="364.0" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#95f5dd" height="354.0" stroke="BLACK" strokeType="INSIDE" width="365.0" />
+                        <TextField fx:id="gephazExportFileNeveInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Button layoutX="202.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpGephazExportalasPDFBttAction" text="PDF Mentés" />
+                        <Button layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpGephazExportalasMegseBttAction" text="Mégse" />
+                        <Text layoutX="65.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exportálás PDF-be">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="150.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fájl neve:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  
+                                                                                                                                                             
+                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                  
+                                                                                  
                </children>
           </AnchorPane>
         </items>
