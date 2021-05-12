@@ -2,7 +2,7 @@
 package hu.unideb.inf.components;
 
 
-import javafx.beans.property.SimpleIntegerProperty;
+
 import javafx.beans.property.SimpleStringProperty;
 
 
@@ -60,7 +60,14 @@ public class Gephaz
         return id.get() ; 
     }
 
-    
+     public void setID(String id)
+    {
+        this.name.set(id);
+    }
+
+    public String getID() {
+        return this.id.get() ; 
+    }
     
     public void setName(String fname)
     {
@@ -68,7 +75,9 @@ public class Gephaz
     }
 
     public String getName() {
+
         return name.get() ; 
+
     }
     
      public void setFormfactor(String formfactor)
