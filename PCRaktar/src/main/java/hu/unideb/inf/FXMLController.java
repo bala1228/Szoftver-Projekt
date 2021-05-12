@@ -1,7 +1,6 @@
 package hu.unideb.inf;
 
 import Database.Db_gephaz;
-import Components.Alaplap;
 import Components.Gephaz;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,7 +41,7 @@ public class FXMLController implements Initializable {
    private final String MENU_GEPHAZAK="Gépházak"; 
    private final String MENU_PC_RESZEK="PC részek"; 
    private final String MENU_ALAPLAP="Alaplapok";
-   private final String MENU_MEREVLEMEZ="Merevlemezek";
+   private final String MENU_MEMORIA="Memóriák";
    
    @FXML
     private AnchorPane BASE;
@@ -358,12 +357,26 @@ public class FXMLController implements Initializable {
     } 
     
     
-<<<<<<< HEAD
+    
+    /*#####################################################*/
+     
+    @FXML
+    private Button HozzadasGephazBtt;
+
+    @FXML
+    private Button ExportálásGephazBtt;
+
+    @FXML
+    private TableView alaplapTable;
+    
     @FXML
     private Pane alaplapPane;
 
     @FXML
-    private TableView alaplapTable;
+    private Button HozzadasAlaplapBtt;
+
+    @FXML
+    private Button ExportálásAlaplapBtt;
 
     @FXML
     private Pane popUpAlaplapHozzadasPane;
@@ -382,7 +395,7 @@ public class FXMLController implements Initializable {
 
     @FXML
     private TextField alaplapHozzadasAmountofmemInput;
-
+   
     @FXML
     private TextField alaplapHozzadasPriceInput;
 
@@ -391,6 +404,8 @@ public class FXMLController implements Initializable {
 
     @FXML
     private TextField alaplapExportFileNeveInput;
+
+
 
     @FXML
     void exportalasAzAlaplaphoz(ActionEvent event) {
@@ -418,20 +433,51 @@ public class FXMLController implements Initializable {
     }
 
     @FXML
-    void ujHozzadasAzAlaplaphoz(ActionEvent event) {
+    void ujHozzadasAzAlaplaphozhoz(ActionEvent event) {
 
     }
-    /*#####################################################*/
     
-    /*Memória*/
+    /*#####################################################*/
+                    /*Memória*/
+     
+    
+
+
     @FXML
     private Pane memoriaPane;
 
     @FXML
-    private TableView<?> memoriaTable;
+    private TableView memoriaTable;
+
+    @FXML
+    private Button HozzadasMemoriaBtt;
+
+    @FXML
+    private Button ExportálásMemoriaBtt;
 
     @FXML
     private Pane popUpMemoriaHozzadasPane;
+
+    @FXML
+    private TextField memoriaHozzadasNameInput;
+
+    @FXML
+    private TextField memoriaHozzadasSlotInput;
+
+    @FXML
+    private TextField memoriaHozzadasSizeInput;
+
+    @FXML
+    private TextField memoriaHozzadasFrequencyInput;
+
+    @FXML
+    private TextField memoriaHozzadasTimingInput;
+
+    @FXML
+    private TextField memoriaHozzadasAmountInput;
+
+    @FXML
+    private TextField memoriaHozzadasPriceInput;
 
     @FXML
     private Pane popUpMemoriaExportPane;
@@ -439,11 +485,14 @@ public class FXMLController implements Initializable {
     @FXML
     private TextField memoriaExportFileNeveInput;
 
+  
+
     @FXML
     void exportalasAMemoriahoz(ActionEvent event) {
 
     }
 
+ 
     @FXML
     void popUpMemoriaExportalasMegseBttAction(ActionEvent event) {
 
@@ -464,14 +513,16 @@ public class FXMLController implements Initializable {
 
     }
 
+   
+
     @FXML
-    void ujHozzadasAMemoriahoz(ActionEvent event) {
+    void ujHozzadasAMemoriahozhozhoz(ActionEvent event) {
 
     }
-    /*#####################################################*/
 
-=======
->>>>>>> parent of 6db2cd4 (még müxik)
+    
+    /*#######################################################*/
+
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");
         TreeView<String> treeView = new TreeView<>(treeItemroot1);
@@ -484,7 +535,7 @@ public class FXMLController implements Initializable {
         
         TreeItem<String> nodeItemA1= new TreeItem<>(MENU_GEPHAZAK/*,gephaznodes*/);
         TreeItem<String> nodeItemA2= new TreeItem<>(MENU_ALAPLAP/*,exportnodes*/);
-        TreeItem<String> nodeItemA3= new TreeItem<>(MENU_MEREVLEMEZ/*,exportnodes*/);
+        TreeItem<String> nodeItemA3= new TreeItem<>(MENU_MEMORIA/*,exportnodes*/);
        
         nodeItemA.getChildren().addAll(nodeItemA1,nodeItemA2,nodeItemA3);
         treeItemroot1.getChildren().addAll( nodeItemA, nodeItemB);
@@ -517,9 +568,33 @@ public class FXMLController implements Initializable {
                                 {   
                                   hazPane.setVisible(true);
                                   starterPane.setVisible(false);
+                                  alaplapPane.setVisible(false);
+                                  memoriaPane.setVisible(false);
                                 }
                                 catch(Exception e){}
                                 break;
+                             
+                            case MENU_ALAPLAP:
+                                try
+                                {   
+                                  hazPane.setVisible(false);
+                                  starterPane.setVisible(false);
+                                  alaplapPane.setVisible(true);
+                                  memoriaPane.setVisible(false);
+                                }
+                                catch(Exception e){}
+                                break;  
+                                
+                            case MENU_MEMORIA:
+                                try
+                                {   
+                                  hazPane.setVisible(false);
+                                  starterPane.setVisible(false);
+                                  alaplapPane.setVisible(false);
+                                  memoriaPane.setVisible(true);
+                                }
+                                catch(Exception e){}
+                                break;        
            
                             case MENU_EXIT:
                                 System.exit(0);
@@ -534,16 +609,11 @@ public class FXMLController implements Initializable {
     
    
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-        
+    public void initialize(URL url, ResourceBundle rb) {       
         setTableDataGephaz();
         setMenuData();
         setStarterPic();
-        
-        
-        
-        
+      
     }    
 
     

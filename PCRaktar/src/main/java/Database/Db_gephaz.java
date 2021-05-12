@@ -144,7 +144,7 @@ public class Db_gephaz
             preparedStatement.setInt(1, Integer.parseInt(gephaz.getID()));
             preparedStatement.execute();
         } catch (SQLException ex) {
-            System.out.println("Valami baj van a contact törlésekor");
+            System.out.println("Valami baj van a gephaz törlésekor");
             System.out.println(""+ex);
         }
     }

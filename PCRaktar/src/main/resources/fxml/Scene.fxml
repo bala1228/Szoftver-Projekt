@@ -97,16 +97,12 @@
                      </children>
                   </Pane>
                   
-                   
-                                  
-                                                 
-                                                                
-                                                                               
-                <!--alaplap-->                                                                      
+                    
+                   <!--alaplap-->                                                                      
                                                                                                              
-                    <Pane id="hazPane" fx:id="alaplapPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <Pane fx:id="alaplapPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>                       
-                        <TableView id="hazTable" fx:id="hazTable" editable="true" prefHeight="465.0" prefWidth="717.0">
+                        <TableView fx:id="alaplapTable" editable="true" prefHeight="465.0" prefWidth="717.0">
                             <placeholder>
                               <javafx.scene.control.Label text="Nincs adat." />
                             </placeholder>    
@@ -114,11 +110,11 @@
                             
                           </columns>
                         </TableView>
-                        <Button id="HozzadasGephazBtt" fx:id="HozzadasAlaplapBtt" layoutX="480.0" layoutY="474.0" mnemonicParsing="false" onAction="#ujHozzadasAzAlaplaphozhoz" text="Hozzáadás" />
-                        <Button fx:id="ExportálásAlaplapBtt" layoutX="398.0" layoutY="474.0" mnemonicParsing="false" onAction="#exportalasAzAlaplaphoz" text="Exportálás" />
+                        <Button layoutX="480.0" layoutY="474.0" mnemonicParsing="false" onAction="#ujHozzadasAzAlaplaphozhoz" text="Hozzáadás" />
+                        <Button layoutX="398.0" layoutY="474.0" mnemonicParsing="false" onAction="#exportalasAzAlaplaphoz" text="Exportálás" />
                      </children>
                   </Pane>
-                  <Pane id="popUpGephazPane" fx:id="popUpAlaplapHozzadasPane" layoutX="104.0" layoutY="37.0" prefHeight="399.0" prefWidth="355.0" visible="false">
+                  <Pane fx:id="popUpAlaplapHozzadasPane" layoutX="104.0" layoutY="37.0" prefHeight="399.0" prefWidth="355.0" visible="false">
                      <children>
                         <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#b8cee3e8" height="399.0" stroke="BLACK" strokeType="INSIDE" width="355.0" />
                         <Button layoutX="232.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpAlaplapHozzaadasBttAction" text="Hozzádás" />
@@ -127,9 +123,9 @@
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.13671875" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formfactor:" wrappingWidth="66.771484375" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vents:" wrappingWidth="140.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Storage:" wrappingWidth="54.13671875" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GPULength:" wrappingWidth="74.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Socket:" wrappingWidth="140.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Memoryslot:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Amount of mem:" wrappingWidth="74.13671875" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="54.13671875" />
                            </children>
                            <padding>
@@ -141,9 +137,9 @@
                            <children>
                               <TextField fx:id="alaplapHozzadasNameInput" />
                               <TextField fx:id="alaplapHozzadasFormfactorInput" />
-                              <TextField fx:id="alaplapHozzadasVentsInput" />
-                              <TextField fx:id="alaplapHozzadasStorageInput" />
-                              <TextField fx:id="alaplapHozzadasGPULengthInput" />
+                              <TextField fx:id="alaplapHozzadasSocketInput" />
+                              <TextField fx:id="alaplapHozzadasMemoryslotInput" />
+                              <TextField fx:id="alaplapHozzadasAmountofmemInput" />
                               <TextField fx:id="alaplapHozzadasPriceInput" />
                            </children>
                            <padding>
@@ -169,21 +165,87 @@
                            </font>
                         </Text>
                      </children>
-                  </Pane>
+                  </Pane>                                      
+                            
+                  <!-- memória -->
                   
-                                                                                                                                                             
-                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                                                  
+                  
+                  
+                  <Pane id="hazPane" fx:id="memoriaPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>                       
+                        <TableView id="hazTable" fx:id="memoriaTable" editable="true" prefHeight="465.0" prefWidth="717.0">
+                            <placeholder>
+                              <javafx.scene.control.Label text="Nincs adat." />
+                            </placeholder>    
+                          <columns>
+                           
+                          </columns>
+                        </TableView>
+                        <Button id="HozzadasGephazBtt" fx:id="HozzadasMemoriaBtt" layoutX="480.0" layoutY="474.0" mnemonicParsing="false" onAction="#ujHozzadasAMemoriahozhozhoz" text="Hozzáadás" />
+                        <Button fx:id="ExportálásMemoriaBtt" layoutX="398.0" layoutY="474.0" mnemonicParsing="false" onAction="#exportalasAMemoriahoz" text="Exportálás" />
+                     </children>
+                  </Pane>
+                  <Pane id="popUpGephazPane" fx:id="popUpMemoriaHozzadasPane" layoutX="104.0" layoutY="37.0" prefHeight="399.0" prefWidth="355.0" visible="false">
+                     <children>
+                        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#b8cee3e8" height="399.0" stroke="BLACK" strokeType="INSIDE" width="355.0" />
+                        <Button layoutX="232.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpMemoriaHozzaadasBttAction" text="Hozzádás" />
+                        <Button layoutX="56.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpMemoriaMegseBttAction" text="Mégse" />
+                        <VBox layoutX="22.0" layoutY="37.0" prefHeight="200.0" prefWidth="105.0" spacing="20.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formfactor:" wrappingWidth="66.771484375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vents:" wrappingWidth="140.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Storage:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GPULength:" wrappingWidth="74.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="54.13671875" />
+                           </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </VBox>
+                        <Text layoutX="103.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Új memória hozzáadása" />
+                        <VBox layoutX="182.0" layoutY="46.0" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
+                           <children>
+                              <TextField fx:id="memoriaHozzadasNameInput" />
+                              <TextField fx:id="memoriaHozzadasSlotInput" />
+                              <TextField fx:id="memoriaHozzadasSizeInput" />
+                              <TextField fx:id="memoriaHozzadasFrequencyInput" />
+                              <TextField fx:id="memoriaHozzadasTimingInput" />
+                              <TextField fx:id="memoriaHozzadasAmountInput" />
+                              <TextField fx:id="memoriaHozzadasPriceInput" />
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="popUpMemoriaExportPane" layoutX="62.0" layoutY="22.0" prefHeight="354.0" prefWidth="364.0" visible="false">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#95f5dd" height="354.0" stroke="BLACK" strokeType="INSIDE" width="365.0" />
+                        <TextField fx:id="memoriaExportFileNeveInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Button layoutX="202.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpMemoriaExportalasPDFBttAction" text="PDF Mentés" />
+                        <Button layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpMemoriaExportalasMegseBttAction" text="Mégse" />
+                        <Text layoutX="65.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exportálás PDF-be">
+                           <font>
+                              <Font size="32.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="150.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fájl neve:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                            
                                                                                   
                </children>
           </AnchorPane>
         </items>
       </SplitPane>
-      <Text layoutX="301.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PC Raktár">
+      <Text layoutX="401.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PC Raktár">
          <font>
             <Font size="35.0" />
          </font>
