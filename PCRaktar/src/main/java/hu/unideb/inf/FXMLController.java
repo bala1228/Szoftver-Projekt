@@ -1,7 +1,8 @@
 package hu.unideb.inf;
 
-import hu.unideb.inf.components.Alaplap;
-import hu.unideb.inf.components.Gephaz;
+import Database.Db_gephaz;
+import Components.Alaplap;
+import Components.Gephaz;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -34,13 +35,8 @@ import javafx.util.Callback;
 
 
 public class FXMLController implements Initializable {
-   
- 
-   Db_gephaz gh=new Db_gephaz();
-            
-     
-       
     
+   Db_gephaz gh=new Db_gephaz();
     
    private final String MENU_EXIT="Kilépés";
    private final String MENU_GEPHAZAK="Gépházak"; 
@@ -359,6 +355,7 @@ public class FXMLController implements Initializable {
         
         hazTable.setItems(dataGephaz);
     } 
+    
     
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");
