@@ -53,7 +53,10 @@ public class FXMLController implements Initializable {
     @FXML
     private Pane starterPane;
     
-
+/*##############################################################  */
+   
+                     /*GÉPHÁZ*/     
+    
     @FXML
     private Pane hazPane;
 
@@ -182,18 +185,10 @@ public class FXMLController implements Initializable {
         hazPane.setDisable(true); 
         popUpGephazHozzadasPane.setVisible(true);
     }
+   
     
     
-    private final ObservableList<Gephaz> dataGephaz=
-            FXCollections.observableArrayList();
-    
-    
-    public void setStarterPic(){
-        Image image = new Image("https://e7.pngegg.com/pngimages/534/1005/png-clipart-computer-monitors-Gephazal-computer-output-device-desktop-computers-multimedia-computer-desktop-pc-computer-computer-monitor-accessory.png"); 
-        ImageView imageview = new ImageView(image);
-        starterPane.getChildren().add(imageview);
-        
-    }
+
     
     public void setTableDataGephaz(){
         TableColumn nevCol= new TableColumn("Gépház:");
@@ -356,6 +351,12 @@ public class FXMLController implements Initializable {
         hazTable.setItems(dataGephaz);
     } 
     
+    private final ObservableList<Gephaz> dataGephaz=
+            FXCollections.observableArrayList();
+    
+    /*######################################################################*/
+   
+    
     
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");
@@ -417,17 +418,20 @@ public class FXMLController implements Initializable {
 
     }
     
+    
+     public void setStarterPic(){
+        Image image = new Image("https://e7.pngegg.com/pngimages/534/1005/png-clipart-computer-monitors-Gephazal-computer-output-device-desktop-computers-multimedia-computer-desktop-pc-computer-computer-monitor-accessory.png"); 
+        ImageView imageview = new ImageView(image);
+        starterPane.getChildren().add(imageview);
+        
+    }
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
-        setTableDataGephaz();
-        setMenuData();
         setStarterPic();
-        
-        
-        
+        setTableDataGephaz();
+        setMenuData();   
         
     }    
 
