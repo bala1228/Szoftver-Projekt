@@ -34,13 +34,8 @@ import javafx.util.Callback;
 
 
 public class FXMLController implements Initializable {
-   
- 
-   Db_gephaz gh=new Db_gephaz();
-            
-     
-       
     
+   Db_gephaz gh=new Db_gephaz();
     
    private final String MENU_EXIT="Kilépés";
    private final String MENU_GEPHAZAK="Gépházak"; 
@@ -359,6 +354,7 @@ public class FXMLController implements Initializable {
         
         hazTable.setItems(dataGephaz);
     } 
+    
     
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");

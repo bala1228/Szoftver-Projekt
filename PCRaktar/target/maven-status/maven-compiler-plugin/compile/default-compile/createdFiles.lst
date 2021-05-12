@@ -1,6 +1,5 @@
 hu\unideb\inf\FXMLController$2.class
 hu\unideb\inf\FXMLController$8.class
-hu\unideb\inf\AlplapPdfGeneration.class
 hu\unideb\inf\components\Merevlemez.class
 hu\unideb\inf\FXMLController$1.class
 hu\unideb\inf\components\Gephaz.class
@@ -11,6 +10,7 @@ hu\unideb\inf\MainApp.class
 hu\unideb\inf\FXMLController$6.class
 hu\unideb\inf\FXMLController$3.class
 hu\unideb\inf\MerevlemezPdfGeneration.class
+hu\unideb\inf\Db_alaplap.class
 hu\unideb\inf\FXMLController$7$1.class
 hu\unideb\inf\FXMLController$7.class
 hu\unideb\inf\FXMLController.class

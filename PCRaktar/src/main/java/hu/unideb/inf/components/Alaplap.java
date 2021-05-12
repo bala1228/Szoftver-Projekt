@@ -1,80 +1,124 @@
 
 package hu.unideb.inf.components;
 
+
+
 import javafx.beans.property.SimpleStringProperty;
 
 
-public class Alaplap {
-    private final SimpleStringProperty nev;
-    private final SimpleStringProperty formatum;
-    private final SimpleStringProperty proceszorFog;
-    private final SimpleStringProperty memoriaFog;
-    private final SimpleStringProperty ar;
-
+    
+public class Alaplap
+{
+    private final SimpleStringProperty id;
+    private final SimpleStringProperty name;
+    private final SimpleStringProperty formfactor;
+    private final SimpleStringProperty socket;
+    private final SimpleStringProperty memoryslot;
+    private final SimpleStringProperty amountofmem;
+    private final SimpleStringProperty price;
+    
     public Alaplap() {
-        this.nev = new SimpleStringProperty("");
-        this.formatum = new SimpleStringProperty( "");
-        this.proceszorFog = new SimpleStringProperty("");
-        this.memoriaFog = new SimpleStringProperty("");
-        this.ar = new SimpleStringProperty("");
+        
+        this.name = new SimpleStringProperty("");
+        this.formfactor = new SimpleStringProperty("");
+        this.socket = new SimpleStringProperty("");
+        this.memoryslot= new SimpleStringProperty("");
+        this.amountofmem= new SimpleStringProperty("");
+        this.price = new SimpleStringProperty("");
+        this.id = new SimpleStringProperty("");
     }
     
     
-    public Alaplap(String nev, String alaplaptipus, String beepitetVentilatorokSzama,
-                   String ssdhely, String ar) {
-        this.nev = new SimpleStringProperty(nev);
-        this.formatum = new SimpleStringProperty( alaplaptipus);
-        this.proceszorFog = new SimpleStringProperty(beepitetVentilatorokSzama);
-       // this.szin = new SimpleStringProperty(szin);
-        this.memoriaFog = new SimpleStringProperty(ssdhely);
-        this.ar = new SimpleStringProperty(ar);
+    public Alaplap(Integer id,String name , String formfactor, String socket, String memoryslot, String amountofmem, String price) {
+        
+        this.name = new SimpleStringProperty(name);
+        this.formfactor = new SimpleStringProperty(formfactor);
+        this.socket = new SimpleStringProperty(socket);
+        this.memoryslot= new SimpleStringProperty(memoryslot);
+        this.amountofmem= new SimpleStringProperty(amountofmem);
+        this.price = new SimpleStringProperty(price);
+        this.id = new SimpleStringProperty(String.valueOf(id));
     }
+    
+    public Alaplap(String name , String formfactor, String socket, String memoryslot, String amountofmem, String price) {
+        
+        this.name = new SimpleStringProperty(name);
+        this.formfactor = new SimpleStringProperty(formfactor);
+        this.socket = new SimpleStringProperty(socket);
+        this.memoryslot= new SimpleStringProperty(memoryslot);
+        this.amountofmem= new SimpleStringProperty(amountofmem);
+        this.price = new SimpleStringProperty(price);
+        this.id = new SimpleStringProperty("");
+    }
+    
 
-    
-    
-    public void setNev(String nev)
+     public void setID(String id)
     {
-        this.nev.set(nev);
+        this.name.set(id);
     }
 
-    public String getNev() {
-        return this.nev.get() ; 
-    }
-
-    public void setFormatum(String alaplaptipus)
+    public String getID() 
     {
-        this.formatum.set(alaplaptipus);
-    }
-
-    public String getFomatum() {
-        return this.formatum.get() ; 
+        return this.id.get() ; 
     }
     
-    public void setProceszorFog(String beepitetVentilatorokSzama)
+    public void setName(String fname)
     {
-        this.proceszorFog.set(beepitetVentilatorokSzama);
+        name.set(fname);
     }
 
-    public String getProceszorFog() {
-        return this.proceszorFog.get() ; 
+    public String getName() 
+    {
+        return name.get() ; 
     }
     
-    public void setMemoriaFog(String ssdhely)
+     public void setFormfactor(String formfactor)
     {
-        this.memoriaFog.set(ssdhely);
+        this.formfactor.set(formfactor);
     }
 
-    public String getMemoriaFog() {
-        return this.memoriaFog.get() ; 
+    public String getFormfactor() 
+    {
+        return this.formfactor.get() ; 
     }
     
-    public void setAr(String ar)
+    public void setSocket(String socket)
     {
-        this.ar.set(ar);
+        this.socket.set(socket);
     }
 
-    public String getAr() {
-        return this.ar.get() ; 
+    public String getSocket() 
+    {
+        return this.socket.get() ; 
     }
+    
+     public void setMemorySlot(String memoryslot)
+    {
+        this.memoryslot.set(memoryslot);
+    }
+
+    public String getMemorySlot() 
+    {
+        return this.memoryslot.get() ; 
+    }
+    
+    public void setAmountOfMem(String amountofmem)
+    {
+        this.amountofmem.set(amountofmem);
+    }
+
+    public String getAmountOfMem() {
+        return this.amountofmem.get() ; 
+    }
+    
+     public void setPrice(String price)
+    {
+        this.price.set(price);
+    }
+
+    public String getPrice() {
+        return this.price.get() ; 
+    }
+
     
 }
