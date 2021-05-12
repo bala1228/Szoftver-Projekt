@@ -464,10 +464,6 @@ public class FXMLController implements Initializable {
     void popUpMemoriaMegseBttAction(ActionEvent event) {
 
     }
-    
-    
-    
-    
 
     @FXML
     void ujHozzadasAMemoriahoz(ActionEvent event) {
