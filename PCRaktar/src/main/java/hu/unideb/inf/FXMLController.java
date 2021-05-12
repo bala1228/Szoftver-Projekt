@@ -53,7 +53,8 @@ public class FXMLController implements Initializable {
     @FXML
     private Pane starterPane;
     
-
+    /*gépház*/
+    
     @FXML
     private Pane hazPane;
 
