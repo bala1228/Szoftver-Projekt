@@ -62,11 +62,11 @@ public class PdfGeneration {
             {
                 Gephaz actualGephaz=data.get(counter-1);
                 
-                table.addCell(actualGephaz.getNev());
-                table.addCell(actualGephaz.getAlaplaptipus());
-                table.addCell(actualGephaz.getBeepitetVentilatorokSzama());
-                table.addCell(actualGephaz.getSsdhely());
-                table.addCell(actualGephaz.getAr());
+                table.addCell(actualGephaz.getName());
+                table.addCell(actualGephaz.getFormfactor());
+                table.addCell(actualGephaz.getVents());
+                table.addCell(actualGephaz.getStorage());
+                table.addCell(actualGephaz.getPrice());
             }
             
             

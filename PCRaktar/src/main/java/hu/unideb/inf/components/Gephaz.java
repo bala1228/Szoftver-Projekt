@@ -17,43 +17,58 @@ public class Gephaz
     private final SimpleStringProperty GPULength;
     private final SimpleStringProperty price;
     
-    
-    
-    
-    
-    
-    
-    
     public Gephaz() {
-        this.id = new SimpleStringProperty("");
+        
         this.name = new SimpleStringProperty("");
         this.formfactor = new SimpleStringProperty("");
         this.vents = new SimpleStringProperty("");
         this.storage= new SimpleStringProperty("");
         this.GPULength= new SimpleStringProperty("");
         this.price = new SimpleStringProperty("");
+        this.id = new SimpleStringProperty("");
     }
     
     
-    public Gephaz(String name , String formfactor, String vents, String storage, String GPULength, String price) {
-        this.id = new SimpleStringProperty("");
+    public Gephaz(Integer id,String name , String formfactor, String vents, String storage, String GPULength, String price) {
+        
         this.name = new SimpleStringProperty(name);
         this.formfactor = new SimpleStringProperty(formfactor);
         this.vents = new SimpleStringProperty(vents);
         this.storage= new SimpleStringProperty(storage);
         this.GPULength= new SimpleStringProperty(GPULength);
         this.price = new SimpleStringProperty(price);
+        this.id = new SimpleStringProperty(String.valueOf(id));
     }
-
     
+    public Gephaz(String name , String formfactor, String vents, String storage, String GPULength, String price) {
+        
+        this.name = new SimpleStringProperty(name);
+        this.formfactor = new SimpleStringProperty(formfactor);
+        this.vents = new SimpleStringProperty(vents);
+        this.storage= new SimpleStringProperty(storage);
+        this.GPULength= new SimpleStringProperty(GPULength);
+        this.price = new SimpleStringProperty(price);
+        this.id = new SimpleStringProperty("");
+    }
     
-    public void setName(String name)
+    public void setID(String fid)
     {
-        this.name.set(name);
+       id.set(fid);
     }
 
-    public String getNev() {
-        return this.name.get() ; 
+    public String getID() {
+        return id.get() ; 
+    }
+
+    
+    
+    public void setName(String fname)
+    {
+        name.set(fname);
+    }
+
+    public String getName() {
+        return name.get() ; 
     }
     
      public void setFormfactor(String formfactor)

@@ -17,16 +17,22 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+       try
+       { 
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
         
         stage.setTitle("Raktár");
-        stage.setWidth(750);
+        stage.setWidth(950);
         stage.setHeight(600);
         stage.setScene(scene);
         stage.show();
+       }
+       catch (Exception ex){
+           ex.printStackTrace();
+       }
     }
 
     /**

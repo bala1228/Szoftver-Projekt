@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="BASE" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.FXMLController">
+<AnchorPane id="AnchorPane" fx:id="BASE" prefHeight="600.0" prefWidth="950" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.FXMLController">
     <children>
-      <SplitPane dividerPositions="0.19117647058823528" layoutY="58.0" prefHeight="543.0" prefWidth="750.0">
+      <SplitPane dividerPositions="0.19117647058823528" layoutY="58.0" prefHeight="543.0" prefWidth="900.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -27,19 +27,9 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <StackPane id="starterPane" fx:id="starterPane" prefHeight="541.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Pane id="exportPane" fx:id="AlaplapPane" prefHeight="541.0" prefWidth="602.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <TableView fx:id="alaplapTable" layoutX="-5.0" layoutY="-4.0" prefHeight="465.0" prefWidth="602.0">
-                          <columns>
-                            
-                          </columns>
-                        </TableView>
-                        <Button layoutX="472.0" layoutY="471.0" mnemonicParsing="false" onAction="#ujHozzadasAzAlaplaphoz" prefHeight="25.0" prefWidth="91.0" text="Új hozzáadás" />
-                        <Button layoutX="371.0" layoutY="471.0" mnemonicParsing="false" onAction="#exportalasAzAlaplaphoz" prefHeight="25.0" prefWidth="80.0" text="Exportálás" />
-                     </children></Pane>
                   <Pane id="hazPane" fx:id="hazPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>                       
-                        <TableView id="hazTable" fx:id="hazTable" editable="true" prefHeight="465.0" prefWidth="602.0">
+                        <TableView id="hazTable" fx:id="hazTable" editable="true" prefHeight="465.0" prefWidth="717.0">
                             <placeholder>
                               <javafx.scene.control.Label text="Nincs adat." />
                             </placeholder>    
@@ -58,11 +48,12 @@
                         <Button layoutX="56.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpGephazMegseBttAction" text="Mégse" />
                         <VBox layoutX="22.0" layoutY="37.0" prefHeight="200.0" prefWidth="105.0" spacing="20.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Név:" wrappingWidth="54.13671875" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Alaplaptípus" wrappingWidth="66.771484375" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ventilatorok száma:" wrappingWidth="140.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SSD hely:" wrappingWidth="54.13671875" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ár:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formfactor:" wrappingWidth="66.771484375" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vents:" wrappingWidth="140.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Storage:" wrappingWidth="54.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="GPULength:" wrappingWidth="74.13671875" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" wrappingWidth="54.13671875" />
                            </children>
                            <padding>
                               <Insets top="20.0" />
@@ -71,11 +62,12 @@
                         <Text layoutX="103.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Új gépház hozzáadása" />
                         <VBox layoutX="182.0" layoutY="46.0" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
                            <children>
-                              <TextField fx:id="gephazHozzadasNevInput" />
-                              <TextField fx:id="gephazHozzadasAlaplaptipusInput" />
-                              <TextField fx:id="gephazHozzadasVentillatorokszamaInput" />
-                              <TextField fx:id="gephazHozzadasSsdhelyInput" />
-                              <TextField fx:id="gephazHozzadasArInput" />
+                              <TextField fx:id="gephazHozzadasNameInput" />
+                              <TextField fx:id="gephazHozzadasFormfactorInput" />
+                              <TextField fx:id="gephazHozzadasVentsInput" />
+                              <TextField fx:id="gephazHozzadasStorageInput" />
+                              <TextField fx:id="gephazHozzadasGPULengthInput" />
+                              <TextField fx:id="gephazHozzadasPriceInput" />
                            </children>
                            <padding>
                               <Insets top="10.0" />
@@ -89,56 +81,6 @@
                         <TextField fx:id="gephazExportFileNeveInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
                         <Button layoutX="202.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpGephazExportalasPDFBttAction" text="PDF Mentés" />
                         <Button layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpGephazExportalasMegseBttAction" text="Mégse" />
-                        <Text layoutX="65.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exportálás PDF-be">
-                           <font>
-                              <Font size="32.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="150.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fájl neve:">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </Pane>
-                  <Pane id="popUpGephazPane" fx:id="popUpAlaplapHozzadasPane" layoutX="93.0" layoutY="47.0" prefHeight="399.0" prefWidth="355.0" visible="false">
-                     <children>
-                        <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#b8cee3e8" height="399.0" layoutX="5.0" stroke="BLACK" strokeType="INSIDE" width="355.0" />
-                        <Button layoutX="232.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpAlaplapHozzaadasBttAction" text="Hozzádás" />
-                        <Button layoutX="56.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpAlaplapMegseBttAction" text="Mégse" />
-                        <VBox layoutX="22.0" layoutY="37.0" prefHeight="200.0" prefWidth="105.0" spacing="20.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Név:" wrappingWidth="54.13671875" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formátum:" wrappingWidth="66.771484375" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Processzor foglalat" wrappingWidth="140.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Memória foglalat" wrappingWidth="98.13671875" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ár:" wrappingWidth="54.13671875" />
-                           </children>
-                           <padding>
-                              <Insets top="20.0" />
-                           </padding>
-                        </VBox>
-                        <Text layoutX="119.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Új alaplap hozzáadása" />
-                        <VBox layoutX="182.0" layoutY="46.0" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
-                           <children>
-                              <TextField fx:id="AlaplapHozzadasNevInput" />
-                              <TextField fx:id="AlaplapHozzadasFormatumInput" />
-                              <TextField fx:id="AlaplapHozzadasProcesszorFogInput" />
-                              <TextField fx:id="AlaplapHozzadasmemoriaFogInput" />
-                              <TextField fx:id="AlaplapHozzadasArInput" />
-                           </children>
-                           <padding>
-                              <Insets top="10.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="popUpAlaplapExportPane" layoutX="72.0" layoutY="32.0" prefHeight="354.0" prefWidth="364.0" visible="false">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#95f5dd" height="354.0" stroke="BLACK" strokeType="INSIDE" width="365.0" />
-                        <TextField fx:id="alaplapExportFileNeveInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
-                        <Button layoutX="202.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpAlaplapExportalasPDFBttAction" text="PDF Mentés" />
-                        <Button layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpAlaplapExportalasMegseBttAction" text="Mégse" />
                         <Text layoutX="65.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exportálás PDF-be">
                            <font>
                               <Font size="32.0" />
