@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Wed May 12 18:47:19 CEST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0179-6179-bf16-00000701c130 
-on database directory E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\sampleDB with class loader java.net.URLClassLoader@35a9e665 
-Loaded from file:/C:/Users/Szulejman/.m2/repository/org/apache/derby/derbyclient/10.15.2.0/derbyclient-10.15.2.0.jar
+Wed May 12 23:23:59 CEST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0179-6277-095c-000001545928 
+on database directory C:\Users\mikba\Documents\NetBeansProjects\Szoftver-Projekt\PCRaktar\sampleDB with class loader java.net.URLClassLoader@776e7dfb 
+Loaded from file:/C:/Users/mikba/.m2/repository/org/apache/derby/derbyclient/10.15.2.0/derbyclient-10.15.2.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=16.0.1+9-24
-user.dir=E:\Documents\GitHub\Szoftver-Projekt\PCRaktar
+java.runtime.version=15.0.2+7-27
+user.dir=C:\Users\mikba\Documents\NetBeansProjects\Szoftver-Projekt\PCRaktar
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0

@@ -422,6 +422,53 @@ public class FXMLController implements Initializable {
     }
     /*#####################################################*/
     
+    /*Memória*/
+    @FXML
+    private Pane memoriaPane;
+
+    @FXML
+    private TableView<?> memoriaTable;
+
+    @FXML
+    private Pane popUpMemoriaHozzadasPane;
+
+    @FXML
+    private Pane popUpMemoriaExportPane;
+
+    @FXML
+    private TextField memoriaExportFileNeveInput;
+
+    @FXML
+    void exportalasAMemoriahoz(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaExportalasMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaExportalasPDFBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaHozzaadasBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ujHozzadasAMemoriahoz(ActionEvent event) {
+
+    }
+    /*#####################################################*/
+    
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");
         TreeView<String> treeView = new TreeView<>(treeItemroot1);
