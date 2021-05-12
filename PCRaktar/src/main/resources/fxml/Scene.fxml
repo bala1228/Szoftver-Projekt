@@ -23,16 +23,16 @@
                   <StackPane id="menuPane" fx:id="menuPane" layoutX="-43.0" layoutY="47.0" prefHeight="541.0" prefWidth="143.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
           </AnchorPane>
-                
                     
-                        
-                                
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <StackPane id="starterPane" fx:id="starterPane" prefHeight="541.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+
                   
                   <!-- ház -->
                   
+
+
                   <Pane id="hazPane" fx:id="hazPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>                       
                         <TableView id="hazTable" fx:id="hazTable" editable="true" prefHeight="465.0" prefWidth="717.0">
@@ -99,6 +99,7 @@
                         </Text>
                      </children>
                   </Pane>                
+
     
               
                         
@@ -255,6 +256,11 @@
                </children>       
           </AnchorPane>     
         </items>   
+
+               </children>
+          </AnchorPane>
+        </items>
+
       </SplitPane>
       <Text layoutX="301.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PC Raktár">
          <font>
