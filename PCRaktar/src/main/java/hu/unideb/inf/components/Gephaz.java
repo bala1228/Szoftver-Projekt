@@ -51,14 +51,6 @@ public class Gephaz
         this.id = new SimpleStringProperty("");
     }
     
-    public void setID(String fid)
-    {
-       id.set(fid);
-    }
-
-    public String getID() {
-        return id.get() ; 
-    }
 
      public void setID(String id)
     {
