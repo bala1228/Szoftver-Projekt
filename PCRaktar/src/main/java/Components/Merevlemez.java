@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hu.unideb.inf.components;
+package Components;
 
 import javafx.beans.property.SimpleStringProperty;
 

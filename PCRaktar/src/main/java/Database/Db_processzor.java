@@ -1,8 +1,8 @@
 
     
-package hu.unideb.inf;
+package Database;
 
-import hu.unideb.inf.components.Gephaz;
+import Components.Processzor;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Db_gephaz
+public class Db_processzor
 {
     final String sqlcreat="create table gephaz (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),name varchar(50), formfactor varchar(20), vents varchar(20), storage varchar(20), GPULength varchar(20), price varchar(20))";
     final String jdbcUrl = "jdbc:derby:sampleDB;create=true";
@@ -22,7 +22,7 @@ public class Db_gephaz
     Statement creatStatement = null;
     DatabaseMetaData dbmd = null;
     
-    public Db_gephaz()
+    public Db_processzor()
     {
         try 
         {
@@ -60,7 +60,7 @@ public class Db_gephaz
         
          try
             {
-             ResultSet rs = dbmd.getTables(null,null,"gephaz" , null);
+             ResultSet rs = dbmd.getTables(null,null,"processzor" , null);
              System.out.println("Minden rendben dbmd ");
                 if (!rs.next())
                 {
@@ -73,17 +73,17 @@ public class Db_gephaz
             }              
     }
 
-    public ArrayList<Gephaz> getAllGephaz()
+    public ArrayList<Processzor> getAllProcesszor()
     {
-            String sql = "select * from gephaz";
-            ArrayList<Gephaz> gep = null;
+            String sql = "select * from processzor";
+            ArrayList<Processzor> proc = null;
             try {
                 ResultSet rs = creatStatement.executeQuery(sql);
-                gep = new ArrayList<>();
+                proc = new ArrayList<>();
 
                 while (rs.next()){
-                    Gephaz actualGephaz = new Gephaz(rs.getInt("id"), rs.getString("name"), rs.getString("formfactor"), rs.getString("vents"), rs.getString("storage"), rs.getString("GPULength"), rs.getString("price"));
-                    gep.add(actualGephaz);
+                    Processzor actualProcesszor = new Processzor(rs.getInt("id"), rs.getString("name"), rs.getString("socket"), rs.getString("cores"), rs.getString("threads"), rs.getString("frequency"), rs.getString("maxfrequency"), rs.getString("price"));
+                    proc.add(actualProcesszor);
 
                 }
             } catch (SQLException ex) {
@@ -91,21 +91,22 @@ public class Db_gephaz
                 ex.printStackTrace();
             }
 
-          return gep;
+          return proc;
     }  
 
-    public void addGephaz(Gephaz gephaz)
+    public void addGephaz(Processzor processzor)
     {
         try
         {
         String sql = "insert into gephaz (name, formfactor, vents, storage, GPULength, price) values (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
-        preparedStatement.setString(1, gephaz.getName());
-        preparedStatement.setString(2, gephaz.getFormfactor());
-        preparedStatement.setString(3, gephaz.getVents());
-        preparedStatement.setString(4, gephaz.getStorage());
-        preparedStatement.setString(5, gephaz.getGPULength());
-        preparedStatement.setString(6, gephaz.getPrice());
+        preparedStatement.setString(1, processzor.getName());
+        preparedStatement.setString(2, processzor.getSocket());
+        preparedStatement.setString(3, processzor.getCores());
+        preparedStatement.setString(4, processzor.getThreads());
+        preparedStatement.setString(5, processzor.getFrequency());
+        preparedStatement.setString(6, processzor.getMaxFrequency());
+        preparedStatement.setString(7, processzor.getPrice());
          preparedStatement.execute();
         } catch (SQLException ex){
             System.out.println("Valami baj van a gépház hozzáadásakor");
@@ -115,19 +116,20 @@ public class Db_gephaz
         
         
 
-    public void updateGephaz(Gephaz gephaz)
+    public void updateGephaz(Processzor processzor)
     {
         try
         {
-        String sql = "update gephaz set name=?, formfactor=?, vents=?, storage=?, GPULength=?, price=? where id=?";
+        String sql = "update processzor set name=?, formfactor=?, vents=?, storage=?, GPULength=?, price=? where id=?";
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
-        preparedStatement.setString(1, gephaz.getName());
-        preparedStatement.setString(2, gephaz.getFormfactor());
-        preparedStatement.setString(3, gephaz.getVents());
-        preparedStatement.setString(4, gephaz.getStorage());
-        preparedStatement.setString(5, gephaz.getGPULength());
-        preparedStatement.setString(6, gephaz.getPrice());
-        preparedStatement.setInt(7, Integer.parseInt(gephaz.getID()));
+       preparedStatement.setString(1, processzor.getName());
+        preparedStatement.setString(2, processzor.getSocket());
+        preparedStatement.setString(3, processzor.getCores());
+        preparedStatement.setString(4, processzor.getThreads());
+        preparedStatement.setString(5, processzor.getFrequency());
+        preparedStatement.setString(6, processzor.getMaxFrequency());
+        preparedStatement.setString(7, processzor.getPrice());
+        preparedStatement.setInt(8, Integer.parseInt(processzor.getID()));
         preparedStatement.execute();
         } catch (SQLException ex){
             System.out.println("Valami baj van a gépház hozzáadásakor");
@@ -136,11 +138,11 @@ public class Db_gephaz
             
     }
     
-    public void removeGephaz(Gephaz gephaz){
+    public void removeGephaz(Processzor processzor){
       try {
-            String sql = "delete from gephaz where id = ?";
+            String sql = "delete from processzor where id = ?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setInt(1, Integer.parseInt(gephaz.getID()));
+            preparedStatement.setInt(1, Integer.parseInt(processzor.getID()));
             preparedStatement.execute();
         } catch (SQLException ex) {
             System.out.println("Valami baj van a contact törlésekor");

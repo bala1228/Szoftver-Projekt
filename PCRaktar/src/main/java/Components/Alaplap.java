@@ -1,5 +1,5 @@
 
-package hu.unideb.inf.components;
+package Components;
 
 
 
