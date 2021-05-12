@@ -104,7 +104,7 @@
                                                                                
                 <!--alaplap-->                                                                      
                                                                                                              
-                    <Pane id="hazPane" fx:id="hazPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <Pane id="hazPane" fx:id="alaplapPane" layoutX="81.0" layoutY="52.0" prefHeight="541.0" prefWidth="449.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>                       
                         <TableView id="hazTable" fx:id="hazTable" editable="true" prefHeight="465.0" prefWidth="717.0">
                             <placeholder>
@@ -114,15 +114,15 @@
                             
                           </columns>
                         </TableView>
-                        <Button id="HozzadasGephazBtt" fx:id="HozzadasGephazBtt" layoutX="480.0" layoutY="474.0" mnemonicParsing="false" onAction="#ujHozzadasAGephazhoz" text="Hozzáadás" />
-                        <Button fx:id="ExportálásGephazBtt" layoutX="398.0" layoutY="474.0" mnemonicParsing="false" onAction="#exportalasAGephazhoz" text="Exportálás" />
+                        <Button id="HozzadasGephazBtt" fx:id="HozzadasAlaplapBtt" layoutX="480.0" layoutY="474.0" mnemonicParsing="false" onAction="#ujHozzadasAzAlaplaphozhoz" text="Hozzáadás" />
+                        <Button fx:id="ExportálásAlaplapBtt" layoutX="398.0" layoutY="474.0" mnemonicParsing="false" onAction="#exportalasAzAlaplaphoz" text="Exportálás" />
                      </children>
                   </Pane>
-                  <Pane id="popUpGephazPane" fx:id="popUpGephazHozzadasPane" layoutX="104.0" layoutY="37.0" prefHeight="399.0" prefWidth="355.0" visible="false">
+                  <Pane id="popUpGephazPane" fx:id="popUpAlaplapHozzadasPane" layoutX="104.0" layoutY="37.0" prefHeight="399.0" prefWidth="355.0" visible="false">
                      <children>
                         <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#b8cee3e8" height="399.0" stroke="BLACK" strokeType="INSIDE" width="355.0" />
-                        <Button layoutX="232.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpGephazHozzaadasBttAction" text="Hozzádás" />
-                        <Button layoutX="56.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpGephazMegseBttAction" text="Mégse" />
+                        <Button layoutX="232.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpAlaplapHozzaadasBttAction" text="Hozzádás" />
+                        <Button layoutX="56.0" layoutY="320.0" mnemonicParsing="false" onAction="#popUpAlaplapMegseBttAction" text="Mégse" />
                         <VBox layoutX="22.0" layoutY="37.0" prefHeight="200.0" prefWidth="105.0" spacing="20.0">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="54.13671875" />
@@ -136,15 +136,15 @@
                               <Insets top="20.0" />
                            </padding>
                         </VBox>
-                        <Text layoutX="103.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Új gépház hozzáadása" />
+                        <Text layoutX="103.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Új alaplap hozzáadása" />
                         <VBox layoutX="182.0" layoutY="46.0" prefHeight="200.0" prefWidth="150.0" spacing="10.0">
                            <children>
-                              <TextField fx:id="gephazHozzadasNameInput" />
-                              <TextField fx:id="gephazHozzadasFormfactorInput" />
-                              <TextField fx:id="gephazHozzadasVentsInput" />
-                              <TextField fx:id="gephazHozzadasStorageInput" />
-                              <TextField fx:id="gephazHozzadasGPULengthInput" />
-                              <TextField fx:id="gephazHozzadasPriceInput" />
+                              <TextField fx:id="alaplapHozzadasNameInput" />
+                              <TextField fx:id="alaplapHozzadasFormfactorInput" />
+                              <TextField fx:id="alaplapHozzadasVentsInput" />
+                              <TextField fx:id="alaplapHozzadasStorageInput" />
+                              <TextField fx:id="alaplapHozzadasGPULengthInput" />
+                              <TextField fx:id="alaplapHozzadasPriceInput" />
                            </children>
                            <padding>
                               <Insets top="10.0" />
@@ -152,12 +152,12 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Pane fx:id="popUpGephazExportPane" layoutX="62.0" layoutY="22.0" prefHeight="354.0" prefWidth="364.0" visible="false">
+                  <Pane fx:id="popUpAlaplapExportPane" layoutX="62.0" layoutY="22.0" prefHeight="354.0" prefWidth="364.0" visible="false">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#95f5dd" height="354.0" stroke="BLACK" strokeType="INSIDE" width="365.0" />
-                        <TextField fx:id="gephazExportFileNeveInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
-                        <Button layoutX="202.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpGephazExportalasPDFBttAction" text="PDF Mentés" />
-                        <Button layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpGephazExportalasMegseBttAction" text="Mégse" />
+                        <TextField fx:id="alaplapExportFileNeveInput" layoutX="82.0" layoutY="123.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Button layoutX="202.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpAlaplapExportalasPDFBttAction" text="PDF Mentés" />
+                        <Button layoutX="82.0" layoutY="239.0" mnemonicParsing="false" onAction="#popUpAlaplapExportalasMegseBttAction" text="Mégse" />
                         <Text layoutX="65.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exportálás PDF-be">
                            <font>
                               <Font size="32.0" />
