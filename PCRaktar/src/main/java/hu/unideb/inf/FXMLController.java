@@ -53,10 +53,7 @@ public class FXMLController implements Initializable {
     @FXML
     private Pane starterPane;
     
-/*##############################################################  */
-   
-                     /*GÉPHÁZ*/     
-    
+
     @FXML
     private Pane hazPane;
 
@@ -185,10 +182,18 @@ public class FXMLController implements Initializable {
         hazPane.setDisable(true); 
         popUpGephazHozzadasPane.setVisible(true);
     }
-   
     
     
-
+    private final ObservableList<Gephaz> dataGephaz=
+            FXCollections.observableArrayList();
+    
+    
+    public void setStarterPic(){
+        Image image = new Image("https://e7.pngegg.com/pngimages/534/1005/png-clipart-computer-monitors-Gephazal-computer-output-device-desktop-computers-multimedia-computer-desktop-pc-computer-computer-monitor-accessory.png"); 
+        ImageView imageview = new ImageView(image);
+        starterPane.getChildren().add(imageview);
+        
+    }
     
     public void setTableDataGephaz(){
         TableColumn nevCol= new TableColumn("Gépház:");
@@ -351,13 +356,121 @@ public class FXMLController implements Initializable {
         hazTable.setItems(dataGephaz);
     } 
     
-    private final ObservableList<Gephaz> dataGephaz=
-            FXCollections.observableArrayList();
-    
     /*######################################################################*/
    
+    /*Alaplap*/
     
+    @FXML
+    private Pane alaplapPane;
+
+    @FXML
+    private TableView alaplapTable;
+
+    @FXML
+    private Pane popUpAlaplapHozzadasPane;
+
+    @FXML
+    private TextField alaplapHozzadasNameInput;
+
+    @FXML
+    private TextField alaplapHozzadasFormfactorInput;
+
+    @FXML
+    private TextField alaplapHozzadasSocketInput;
+
+    @FXML
+    private TextField alaplapHozzadasMemoryslotInput;
+
+    @FXML
+    private TextField alaplapHozzadasAmountofmemInput;
+
+    @FXML
+    private TextField alaplapHozzadasPriceInput;
+
+    @FXML
+    private Pane popUpAlaplapExportPane;
+
+    @FXML
+    private TextField alaplapExportFileNeveInput;
+
+    @FXML
+    void exportalasAzAlaplaphoz(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpAlaplapExportalasMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpAlaplapExportalasPDFBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpAlaplapHozzaadasBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpAlaplapMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ujHozzadasAzAlaplaphoz(ActionEvent event) {
+
+    }
+    /*#####################################################*/
     
+    /*Memória*/
+    @FXML
+    private Pane memoriaPane;
+
+    @FXML
+    private TableView<?> memoriaTable;
+
+    @FXML
+    private Pane popUpMemoriaHozzadasPane;
+
+    @FXML
+    private Pane popUpMemoriaExportPane;
+
+    @FXML
+    private TextField memoriaExportFileNeveInput;
+
+    @FXML
+    void exportalasAMemoriahoz(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaExportalasMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaExportalasPDFBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaHozzaadasBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ujHozzadasAMemoriahoz(ActionEvent event) {
+
+    }
+    /*#####################################################*/
+
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");
         TreeView<String> treeView = new TreeView<>(treeItemroot1);
@@ -418,20 +531,17 @@ public class FXMLController implements Initializable {
 
     }
     
-    
-     public void setStarterPic(){
-        Image image = new Image("https://e7.pngegg.com/pngimages/534/1005/png-clipart-computer-monitors-Gephazal-computer-output-device-desktop-computers-multimedia-computer-desktop-pc-computer-computer-monitor-accessory.png"); 
-        ImageView imageview = new ImageView(image);
-        starterPane.getChildren().add(imageview);
-        
-    }
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        setStarterPic();
+        
         setTableDataGephaz();
-        setMenuData();   
+        setMenuData();
+        setStarterPic();
+        
+        
+        
         
     }    
 
