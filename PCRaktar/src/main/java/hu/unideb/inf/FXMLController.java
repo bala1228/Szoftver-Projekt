@@ -356,7 +356,125 @@ public class FXMLController implements Initializable {
         hazTable.setItems(dataGephaz);
     } 
     
+    /*######################################################################*/
+   
+    /*Alaplap*/
     
+    @FXML
+    private Pane alaplapPane;
+
+    @FXML
+    private TableView alaplapTable;
+
+    @FXML
+    private Pane popUpAlaplapHozzadasPane;
+
+    @FXML
+    private TextField alaplapHozzadasNameInput;
+
+    @FXML
+    private TextField alaplapHozzadasFormfactorInput;
+
+    @FXML
+    private TextField alaplapHozzadasSocketInput;
+
+    @FXML
+    private TextField alaplapHozzadasMemoryslotInput;
+
+    @FXML
+    private TextField alaplapHozzadasAmountofmemInput;
+
+    @FXML
+    private TextField alaplapHozzadasPriceInput;
+
+    @FXML
+    private Pane popUpAlaplapExportPane;
+
+    @FXML
+    private TextField alaplapExportFileNeveInput;
+
+    @FXML
+    void exportalasAzAlaplaphoz(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpAlaplapExportalasMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpAlaplapExportalasPDFBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpAlaplapHozzaadasBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpAlaplapMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ujHozzadasAzAlaplaphoz(ActionEvent event) {
+
+    }
+    /*#####################################################*/
+    
+    /*Memória*/
+    @FXML
+    private Pane memoriaPane;
+
+    @FXML
+    private TableView<?> memoriaTable;
+
+    @FXML
+    private Pane popUpMemoriaHozzadasPane;
+
+    @FXML
+    private Pane popUpMemoriaExportPane;
+
+    @FXML
+    private TextField memoriaExportFileNeveInput;
+
+    @FXML
+    void exportalasAMemoriahoz(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaExportalasMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaExportalasPDFBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaHozzaadasBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpMemoriaMegseBttAction(ActionEvent event) {
+
+    }
+    
+    
+    
+    
+
+    @FXML
+    void ujHozzadasAMemoriahoz(ActionEvent event) {
+
+    }
+    /*#####################################################*/
+
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");
         TreeView<String> treeView = new TreeView<>(treeItemroot1);
