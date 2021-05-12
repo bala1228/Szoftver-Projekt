@@ -82,7 +82,8 @@ public class Db_gephaz
                 gep = new ArrayList<>();
 
                 while (rs.next()){
-                    Gephaz actualGephaz = new Gephaz(rs.getInt("id"), rs.getString("name"), rs.getString("formfactor"), rs.getString("vents"), rs.getString("storage"), rs.getString("GPULength"), rs.getString("price"));
+                    Gephaz actualGephaz = new Gephaz(rs.getInt("id"), rs.getString("name"), rs.getString("formfactor"), rs.getString("vents"),
+                                          rs.getString("storage"), rs.getString("GPULength"), rs.getString("price"));
                     gep.add(actualGephaz);
 
                 }
