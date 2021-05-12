@@ -1,13 +1,13 @@
 hu\unideb\inf\FXMLController$2.class
 Components\Merevlemez.class
 Database\Db_gephaz.class
+Components\Gpu.class
 hu\unideb\inf\FXMLController$5.class
 hu\unideb\inf\PdfGeneration.class
 hu\unideb\inf\FXMLController$6.class
 hu\unideb\inf\FXMLController$3.class
 Components\Alaplap.class
 Database\Db_alaplap.class
-Database\Db_videokartya.class
 hu\unideb\inf\FXMLController$8.class
 Components\Memoria.class
 hu\unideb\inf\FXMLController$1.class
@@ -20,5 +20,5 @@ Components\Gephaz.class
 hu\unideb\inf\MerevlemezPdfGeneration.class
 hu\unideb\inf\FXMLController$7$1.class
 hu\unideb\inf\FXMLController$7.class
-Components\Videokartya.class
 hu\unideb\inf\FXMLController.class
+Database\Db_gpu.class

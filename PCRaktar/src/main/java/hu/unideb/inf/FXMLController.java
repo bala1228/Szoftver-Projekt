@@ -357,10 +357,8 @@ public class FXMLController implements Initializable {
         hazTable.setItems(dataGephaz);
     } 
     
-    /*######################################################################*/
-   
-    /*Alaplap*/
     
+<<<<<<< HEAD
     @FXML
     private Pane alaplapPane;
 
@@ -472,6 +470,8 @@ public class FXMLController implements Initializable {
     }
     /*#####################################################*/
 
+=======
+>>>>>>> parent of 6db2cd4 (még müxik)
     public void setMenuData(){
         TreeItem<String> treeItemroot1= new TreeItem<>("Menü:");
         TreeView<String> treeView = new TreeView<>(treeItemroot1);
