@@ -1312,7 +1312,7 @@ public void setTableDataProcesszor(){
 
     @FXML
     private TextField videokartyaHozzadasManifactureInput;
-
+    
     @FXML
     private TextField videokartyaHozzadasNameInput;
 
@@ -1333,41 +1333,288 @@ public void setTableDataProcesszor(){
 
     @FXML
     private Pane popUpVideokartyaExportPane;
+    
+    @FXML
+    private TextField videokartyaExportFileNeveInput;
 
-
-
+    
     @FXML
     void exportalasAVideokartyahoz(ActionEvent event) {
-
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true);        
+        videokartyaPane.setOpacity(0.3);
+        videokartyaPane.setDisable(true); 
+        popUpProcesszorExportPane.setVisible(true);
     }
-
+    
     @FXML
+    //Videokártya almenü -> Exportálás gomb -> Exportálás popup -> Mégse gomb Action        
     void popUpVideokartyaExportalasMegseBttAction(ActionEvent event) {
-
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        videokartyaPane.setOpacity(1);
+        videokartyaPane.setDisable(false); 
+        popUpVideokartyaExportPane.setVisible(false);
     }
 
     @FXML
+    //Videokártya almenü -> Exportálás gomb -> Exportálás popup -> PDF Mentés gomb Action        
     void popUpVideokartyaExportalasPDFBttAction(ActionEvent event) {
-
+               
+        String fileNev=videokartyaExportFileNeveInput.getText();
+        fileNev = fileNev.replaceAll("\\s+","");
+        
+        if(fileNev != null && !fileNev.equals("") )
+        {              
+            PdfGeneration pdfCreator=new PdfGeneration();
+            pdfCreator.pdfGenrationVideokartya(fileNev,dataVideokartya);
+        }
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        videokartyaPane.setOpacity(1);
+        videokartyaPane.setDisable(false); 
+        popUpVideokartyaExportPane.setVisible(false);
     }
 
     @FXML
+    //Videókártya almenü -> Hozzáadás gomb -> Hozzáadás popUp -> Hozzáadás gomb Action        
     void popUpVideokartyaHozzaadasBttAction(ActionEvent event) {
-
+        try
+        {
+        Videokartya newVideokartya= new Videokartya(
+                videokartyaHozzadasManifactureInput.getText(),
+                videokartyaHozzadasNameInput.getText(),
+                videokartyaHozzadasSlotInput.getText(),
+                videokartyaHozzadasVramInput.getText(),
+                videokartyaHozzadasFrequencyInput.getText(),
+                videokartyaHozzadasLengthInput.getText(),
+                videokartyaHozzadasPriceInput.getText());   
+                  
+        dataVideokartya.add(newVideokartya);
+        vk.addVideokartya(newVideokartya);
+                  
+        videokartyaHozzadasManifactureInput.clear();
+        videokartyaHozzadasNameInput.clear();
+        videokartyaHozzadasSlotInput.clear();
+        videokartyaHozzadasVramInput.clear();
+        videokartyaHozzadasFrequencyInput.clear();             
+        videokartyaHozzadasLengthInput.clear();
+        videokartyaHozzadasPriceInput.clear();
+        
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        videokartyaPane.setOpacity(1);
+        videokartyaPane.setDisable(false); 
+        popUpVideokartyaHozzadasPane.setVisible(false);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
+    //Videókártya almenü -> Hozzáadás gomb -> Hozzáadás popUp -> Mégse gomb Action  
     void popUpVideokartyaMegseBttAction(ActionEvent event) {
-
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        videokartyaPane.setOpacity(1);
+        videokartyaPane.setDisable(false); 
+        popUpVideokartyaHozzadasPane.setVisible(false);
     }
 
     @FXML
+    //Gépház almenü -> Hozzáadás gomb Action        
     void ujHozzadasAVideokartyahoz(ActionEvent event) {
-
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true);        
+        videokartyaPane.setOpacity(0.3);
+        videokartyaPane.setDisable(true); 
+        popUpVideokartyaHozzadasPane.setVisible(true);
     }
-
+    
+    
     private final ObservableList<Videokartya> dataVideokartya=
             FXCollections.observableArrayList();
+    
+   public void setTableDataVideokartya(){
+        TableColumn gyartoCol= new TableColumn("Videókártya:");
+        gyartoCol.setMinWidth(100);
+        gyartoCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        gyartoCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("manifacture"));
+        
+        gyartoCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Videokartya,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Videokartya,String> t)
+                    {
+                        Videokartya actualVideokartya= (Videokartya) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualVideokartya.setName(t.getNewValue());
+                        vk.updateVideokartya(actualVideokartya);
+                    }
+                }
+        );
+        
+        TableColumn nevCol= new TableColumn("Videókártya:");
+        nevCol.setMinWidth(100);
+        nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nevCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("name"));
+        
+        nevCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Videokartya,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Videokartya,String> t)
+                    {
+                        Videokartya actualVideokartya= (Videokartya) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualVideokartya.setName(t.getNewValue());
+                        vk.updateVideokartya(actualVideokartya);
+                    }
+                }
+        );
+        
+        
+        TableColumn foglalatCol= new TableColumn("Foglalat:");
+        foglalatCol.setMinWidth(100);
+        foglalatCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        foglalatCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("slot"));
+        
+        foglalatCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Videokartya,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Videokartya,String> t)
+                    {
+                        Videokartya actualVideokartya= (Videokartya) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualVideokartya.setSlot(t.getNewValue());
+                        vk.updateVideokartya(actualVideokartya);
+                    }
+                }
+        );
+        
+         TableColumn vramCol= new TableColumn("VRAM");
+        vramCol.setMinWidth(100);
+	vramCol.setCellFactory(TextFieldTableCell.forTableColumn());
+	vramCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("vram"));
+        
+         vramCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Videokartya,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Videokartya,String> t)
+                    {
+                        Videokartya actualVideokartya= (Videokartya) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualVideokartya.setVram(t.getNewValue());
+                        vk.updateVideokartya(actualVideokartya);
+                    }
+                }
+        );
+        
+  
+        
+         TableColumn orajelCol= new TableColumn("Órajel");
+        orajelCol.setMinWidth(100);
+        orajelCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        orajelCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("frequency"));
+        
+        orajelCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Videokartya,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Videokartya,String> t)
+                    {
+                        Videokartya actualVideokartya= (Videokartya) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualVideokartya.setFrequency(t.getNewValue());
+                        vk.updateVideokartya(actualVideokartya);
+                    }
+                }
+        );
+        
+        TableColumn hosszCol= new TableColumn("Hossz");
+        hosszCol.setMinWidth(100);
+        hosszCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        hosszCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("length"));
+        
+       	hosszCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Videokartya,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Videokartya,String> t)
+                    {
+                         Videokartya actualVideokartya= (Videokartya) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualVideokartya.setLength(t.getNewValue());
+                        vk.updateVideokartya(actualVideokartya);
+                    }
+                }
+        );
+                    
+        
+         TableColumn arCol= new TableColumn("Ár");
+        arCol.setMinWidth(100);
+        arCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        arCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("price"));
+        
+        arCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Videokartya,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Videokartya,String> t)
+                    {
+                        Videokartya actualVideokartya= (Videokartya) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualVideokartya.setPrice(t.getNewValue());
+                        vk.updateVideokartya(actualVideokartya);
+                    }
+                }
+        );
+        
+        TableColumn removeCol= new TableColumn("Törlés");
+        
+
+        Callback<TableColumn<Videokartya, String>, TableCell<Videokartya, String>> cellFactory = 
+                new Callback<TableColumn<Videokartya, String>, TableCell<Videokartya, String>>()
+                {
+                    @Override
+                    public TableCell call( final TableColumn<Videokartya, String> param )
+                    {
+                        final TableCell<Videokartya, String> cell = new TableCell<Videokartya, String>()
+                        {   
+                            final Button btn = new Button( "Törlés" );
+
+                            @Override
+                            public void updateItem( String item, boolean empty )
+                            {
+                                super.updateItem( item, empty );
+                                if ( empty )
+                                {
+                                    setGraphic( null );
+                                    setText( null );
+                                }
+                                else
+                                {
+                                    btn.setOnAction( ( ActionEvent event ) ->
+                                            {
+                                                Videokartya videokartya = getTableView().getItems().get( getIndex() );
+                                                dataVideokartya.remove(videokartya);
+                                               	vk.removeVideokartya(videokartya);
+                                            } );
+                                    setGraphic( btn );
+                                    setText( null );
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        
+        
+        videokartyaTable.getColumns().addAll(gyartoCol,nevCol,foglalatCol,
+                vramCol,orajelCol,hosszCol,arCol,removeCol);
+        
+        dataVideokartya.addAll(vk.getAllVideokartya());
+        
+        videokartyaTable.setItems(dataVideokartya);
+    }
     /*#######################################################*/
 
     public void setMenuData(){
@@ -1504,6 +1751,7 @@ public void setTableDataProcesszor(){
         setTableDataGephaz();
         setTableDataMemoria();
         setTableDataProcesszor();
+        setTableDataVideokartya();
         setMenuData();
         setStarterPic();
       

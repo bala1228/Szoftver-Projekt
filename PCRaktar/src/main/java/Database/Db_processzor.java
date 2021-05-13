@@ -60,7 +60,7 @@ public class Db_processzor
         
          try
             {
-             ResultSet rs = dbmd.getTables(null,null,"processzor" , null);
+             ResultSet rs = dbmd.getTables(null,"APP","processzor" , null);
              System.out.println("Minden rendben dbmd ");
                 if (!rs.next())
                 {

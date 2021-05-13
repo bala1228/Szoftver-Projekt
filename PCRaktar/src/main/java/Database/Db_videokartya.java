@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Db_videokartya
 {
-    final String sqlcreat="create table videokartya (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),manifacture varchar(30), name varchar(50), slot varchar(20),vram varchar(3), frequency varchar(8) length varchar(5), price varchar(7)";
+    final String sqlcreat="create table videokartya (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),manifacture varchar(30), name varchar(50), slot varchar(20),vram varchar(3), frequency varchar(8), length varchar(5), price varchar(7))";
     final String jdbcUrl = "jdbc:derby:sampleDB;create=true";
     //final String jdbcUrl2 = "jdbc:sqlite:smfdb.db";
     
@@ -60,7 +60,7 @@ public class Db_videokartya
         
          try
             {
-             ResultSet rs = dbmd.getTables(null,null,"videokartya" , null);
+             ResultSet rs = dbmd.getTables(null,"APP","videokartya" , null);
              System.out.println("Minden rendben dbmd ");
                 if (!rs.next())
                 {
@@ -117,7 +117,7 @@ public class Db_videokartya
         
         
 
-    public void updateGephaz(Videokartya videokartya)
+    public void updateVideokartya(Videokartya videokartya)
     {
         try
         {
@@ -139,7 +139,7 @@ public class Db_videokartya
             
     }
     
-    public void removeGephaz(Videokartya videokartya){
+    public void removeVideokartya(Videokartya videokartya){
       try {
             String sql = "delete from videokartya where id = ?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);

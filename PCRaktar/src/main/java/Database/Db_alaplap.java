@@ -60,7 +60,7 @@ public class Db_alaplap
         
          try
             {
-             ResultSet rs = dbmd.getTables(null,null,"alaplap" , null);
+             ResultSet rs = dbmd.getTables(null,"APP","alaplap" , null);
              System.out.println("Minden rendben dbmd ");
                 if (!rs.next())
                 {

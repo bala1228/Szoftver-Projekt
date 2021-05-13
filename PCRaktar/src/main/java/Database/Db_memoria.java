@@ -60,7 +60,7 @@ public class Db_memoria
         
          try
             {
-             ResultSet rs = dbmd.getTables(null,null,"memoria" , null);
+             ResultSet rs = dbmd.getTables(null,"APP","memoria" , null);
              System.out.println("Minden rendben dbmd ");
                 if (!rs.next())
                 {

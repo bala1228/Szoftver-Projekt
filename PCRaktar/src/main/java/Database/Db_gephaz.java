@@ -60,7 +60,7 @@ public class Db_gephaz
         
          try
             {
-             ResultSet rs = dbmd.getTables(null,null,"gephaz" , null);
+             ResultSet rs = dbmd.getTables(null,"APP","gephaz" , null);
              System.out.println("Minden rendben dbmd ");
                 if (!rs.next())
                 {
