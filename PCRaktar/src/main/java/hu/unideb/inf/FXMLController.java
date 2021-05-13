@@ -357,7 +357,7 @@ public class FXMLController implements Initializable {
                         return cell;
                     }
                 };
-        
+        removeCol.setCellFactory( cellFactory );
         
         hazTable.getColumns().addAll(nevCol,alaplaptipusCol,
                 beepitetVentilatorokSzamaCol,ssdhelyCol,gpuCol,arCol,removeCol);
@@ -655,6 +655,7 @@ try
                     }
                 };
         
+        removeCol.setCellFactory( cellFactory );
         
         alaplapTable.getColumns().addAll(nevCol,formfactorCol,
                 socketCol,memoryslotCol,amountofmemCol,arCol,removeCol);
@@ -975,6 +976,7 @@ try
                     }
                 };
         
+        removeCol.setCellFactory( cellFactory );
         
         memoriaTable.getColumns().addAll(nevCol,slotCol,
                 sizeCol,frequencyCol,timingCol,amountCol,priceCol,removeCol);
@@ -1288,6 +1290,7 @@ public void setTableDataProcesszor(){
                     }
                 };
         
+        removeCol.setCellFactory( cellFactory );
         
         processzorTable.getColumns().addAll(nevCol,socketCol,
                 coresCol,threadsCol,frequencyCol,maxfrequencyCol,arCol,removeCol);
@@ -1607,6 +1610,7 @@ public void setTableDataProcesszor(){
                     }
                 };
         
+        removeCol.setCellFactory( cellFactory );
         
         videokartyaTable.getColumns().addAll(gyartoCol,nevCol,foglalatCol,
                 vramCol,orajelCol,hosszCol,arCol,removeCol);

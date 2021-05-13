@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Thu May 13 12:57:09 CEST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0179-655f-866a-000005909ff8 
-on database directory E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\sampleDB with class loader java.net.URLClassLoader@3ad9fea 
+Thu May 13 13:36:47 CEST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0179-6583-ce27-0000058185e8 
+on database directory E:\Documents\GitHub\Szoftver-Projekt\PCRaktar\sampleDB with class loader java.net.URLClassLoader@7ca8f5d7 
 Loaded from file:/C:/Users/Szulejman/.m2/repository/org/apache/derby/derbyclient/10.15.2.0/derbyclient-10.15.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=16.0.1+9-24
