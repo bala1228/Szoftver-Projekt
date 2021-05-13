@@ -208,7 +208,7 @@ public class FXMLController implements Initializable {
     
     public void setTableDataGephaz(){
         TableColumn nevCol= new TableColumn("Gépház:");
-        nevCol.setMinWidth(100);
+        nevCol.setMinWidth(300);
         nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nevCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("name"));
         
@@ -226,7 +226,7 @@ public class FXMLController implements Initializable {
         );
         
         
-         TableColumn alaplaptipusCol= new TableColumn("Alaplaptípusa:");
+         TableColumn alaplaptipusCol= new TableColumn("Formátum:");
         alaplaptipusCol.setMinWidth(100);
         alaplaptipusCol.setCellFactory(TextFieldTableCell.forTableColumn());
         alaplaptipusCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("formfactor"));
@@ -244,7 +244,7 @@ public class FXMLController implements Initializable {
                 }
         );
         
-         TableColumn beepitetVentilatorokSzamaCol= new TableColumn("Beépített ventilatorok száma:");
+         TableColumn beepitetVentilatorokSzamaCol= new TableColumn("Beépíthető Ventillátorok:");
         beepitetVentilatorokSzamaCol.setMinWidth(100);
         beepitetVentilatorokSzamaCol.setCellFactory(TextFieldTableCell.forTableColumn());
         beepitetVentilatorokSzamaCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("vents"));
@@ -264,7 +264,7 @@ public class FXMLController implements Initializable {
         
   
         
-         TableColumn ssdhelyCol= new TableColumn("Storage:");
+         TableColumn ssdhelyCol= new TableColumn("Háttértár hely:");
         ssdhelyCol.setMinWidth(100);
         ssdhelyCol.setCellFactory(TextFieldTableCell.forTableColumn());
         ssdhelyCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("storage"));
@@ -282,8 +282,8 @@ public class FXMLController implements Initializable {
                 }
         );
         
-        TableColumn gpuCol= new TableColumn("GPULength");
-        gpuCol.setMinWidth(100);
+        TableColumn gpuCol= new TableColumn("Max Videókártya hossz:");
+        gpuCol.setMinWidth(150);
         gpuCol.setCellFactory(TextFieldTableCell.forTableColumn());
         gpuCol.setCellValueFactory(new PropertyValueFactory<Gephaz,String>("GPULength"));
         
@@ -505,7 +505,7 @@ try
     
     public void setTableDataAlaplap(){
         TableColumn nevCol= new TableColumn("Alaplap:");
-        nevCol.setMinWidth(100);
+        nevCol.setMinWidth(300);
         nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nevCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("name"));
         
@@ -809,7 +809,7 @@ try
     
     public void setTableDataMemoria(){
         TableColumn nevCol= new TableColumn("Memoria:");
-        nevCol.setMinWidth(100);
+        nevCol.setMinWidth(200);
         nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nevCol.setCellValueFactory(new PropertyValueFactory<Memoria,String>("name"));
         
@@ -1121,7 +1121,7 @@ try
 
 public void setTableDataProcesszor(){
         TableColumn nevCol= new TableColumn("Processzor:");
-        nevCol.setMinWidth(100);
+        nevCol.setMinWidth(200);
         nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nevCol.setCellValueFactory(new PropertyValueFactory<Processzor,String>("name"));
         
@@ -1438,7 +1438,7 @@ public void setTableDataProcesszor(){
             FXCollections.observableArrayList();
     
    public void setTableDataVideokartya(){
-        TableColumn gyartoCol= new TableColumn("Videókártya:");
+        TableColumn gyartoCol= new TableColumn("Videokártya:");
         gyartoCol.setMinWidth(100);
         gyartoCol.setCellFactory(TextFieldTableCell.forTableColumn());
         gyartoCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("manifacture"));
@@ -1456,8 +1456,8 @@ public void setTableDataProcesszor(){
                 }
         );
         
-        TableColumn nevCol= new TableColumn("Videókártya:");
-        nevCol.setMinWidth(100);
+        TableColumn nevCol= new TableColumn("Széria:");
+        nevCol.setMinWidth(200);
         nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
         nevCol.setCellValueFactory(new PropertyValueFactory<Videokartya,String>("name"));
         

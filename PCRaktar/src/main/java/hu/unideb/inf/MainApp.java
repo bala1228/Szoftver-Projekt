@@ -20,7 +20,7 @@ public class MainApp extends Application {
         scene.getStylesheets().add("/styles/Styles.css");
         
         stage.setTitle("Raktár");
-        stage.setWidth(950);
+        stage.setWidth(1200);
         stage.setHeight(600);
         stage.setScene(scene);
         stage.show();
