@@ -131,8 +131,8 @@ public class PdfGeneration {
                 table.addCell(actualAlaplap.getName());
                 table.addCell(actualAlaplap.getFormfactor());
                 table.addCell(actualAlaplap.getSocket());
-                table.addCell(actualAlaplap.getMemorySlot());
-                table.addCell(actualAlaplap.getAmountOfMem());
+                table.addCell(actualAlaplap.getMemoryslot());
+                table.addCell(actualAlaplap.getAmountofmem());
                 table.addCell(actualAlaplap.getPrice());
             }
             

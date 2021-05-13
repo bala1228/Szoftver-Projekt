@@ -88,22 +88,22 @@ public class Alaplap
         return this.socket.get() ; 
     }
     
-     public void setMemorySlot(String memoryslot)
+     public void setMemoryslot(String memoryslot)
     {
         this.memoryslot.set(memoryslot);
     }
 
-    public String getMemorySlot() 
+    public String getMemoryslot() 
     {
         return this.memoryslot.get() ; 
     }
     
-    public void setAmountOfMem(String amountofmem)
+    public void setAmountofmem(String amountofmem)
     {
         this.amountofmem.set(amountofmem);
     }
 
-    public String getAmountOfMem() {
+    public String getAmountofmem() {
         return this.amountofmem.get() ; 
     }
     

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Db_alaplap
 {
-    final String sqlcreat="create table alaplap (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),name varchar(50), formfactor varchar(10), socket varchar(15), memoryslot varchar(5), amountofmem varchar(2), price varchar(7))";
+    final String sqlcreat="create table alaplap (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),name varchar(50), formfactor varchar(10), socket varchar(15), memoryslot varchar(5), amountofmem varchar(5), price varchar(7))";
     final String jdbcUrl = "jdbc:derby:sampleDB;create=true";
     //final String jdbcUrl2 = "jdbc:sqlite:smfdb.db";
     
@@ -104,8 +104,8 @@ public class Db_alaplap
         preparedStatement.setString(1, alaplap.getName());
         preparedStatement.setString(2, alaplap.getFormfactor());
         preparedStatement.setString(3, alaplap.getSocket());
-        preparedStatement.setString(4, alaplap.getMemorySlot());
-        preparedStatement.setString(5, alaplap.getAmountOfMem());
+        preparedStatement.setString(4, alaplap.getMemoryslot());
+        preparedStatement.setString(5, alaplap.getAmountofmem());
         preparedStatement.setString(6, alaplap.getPrice());
          preparedStatement.execute();
         } catch (SQLException ex){
@@ -125,8 +125,8 @@ public class Db_alaplap
         preparedStatement.setString(1, alaplap.getName());
         preparedStatement.setString(2, alaplap.getFormfactor());
         preparedStatement.setString(3, alaplap.getSocket());
-        preparedStatement.setString(4, alaplap.getMemorySlot());
-        preparedStatement.setString(5, alaplap.getAmountOfMem());
+        preparedStatement.setString(4, alaplap.getMemoryslot());
+        preparedStatement.setString(5, alaplap.getAmountofmem());
         preparedStatement.setString(6, alaplap.getPrice());
         preparedStatement.setInt(7, Integer.parseInt(alaplap.getID()));
         preparedStatement.execute();

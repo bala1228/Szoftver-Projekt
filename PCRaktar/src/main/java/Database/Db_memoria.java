@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Db_memoria
 {
-    final String sqlcreat="create table memoria (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),name varchar(50), slot varchar(5),size varchar(4), frequency varchar(5), timing varchar(5) amount varchar(2), price varchar(7))";
+    final String sqlcreat="create table memoria (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),name varchar(50), slot varchar(5),size varchar(4), frequency varchar(5), timing varchar(5), amount varchar(2), price varchar(7))";
     final String jdbcUrl = "jdbc:derby:sampleDB;create=true";
     //final String jdbcUrl2 = "jdbc:sqlite:smfdb.db";
     

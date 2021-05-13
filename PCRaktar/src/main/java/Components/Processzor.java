@@ -108,12 +108,12 @@ public class Processzor
         return this.frequency.get() ; 
     }
     
-    public void setMaxFrequency(String maxfrequency)
+    public void setMaxfrequency(String maxfrequency)
     {
         this.maxfrequency.set(maxfrequency);
     }
 
-    public String getMaxFrequency() {
+    public String getMaxfrequency() {
         return this.maxfrequency.get() ; 
     }
     

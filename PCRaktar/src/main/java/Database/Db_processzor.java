@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Db_processzor
 {
-    final String sqlcreat="create table processzor (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1),name varchar(50), name varchar(50), socket varchar(15), cores varchar(2), threads varchar(2), frequency varchar(3), maxfrequency varchar(3), price varchar(7))";
+    final String sqlcreat="create table processzor (id INT primary key GENERATED ALWAYS AS IDENTITY(START WITH 1, INCREMENT BY 1), name varchar(50), socket varchar(15), cores varchar(10), threads varchar(10), frequency varchar(10), maxfrequency varchar(10), price varchar(7))";
     final String jdbcUrl = "jdbc:derby:sampleDB;create=true";
     //final String jdbcUrl2 = "jdbc:sqlite:smfdb.db";
     
@@ -106,7 +106,7 @@ public class Db_processzor
         preparedStatement.setString(3, processzor.getCores());
         preparedStatement.setString(4, processzor.getThreads());
         preparedStatement.setString(5, processzor.getFrequency());
-        preparedStatement.setString(6, processzor.getMaxFrequency());
+        preparedStatement.setString(6, processzor.getMaxfrequency());
         preparedStatement.setString(7, processzor.getPrice());
          preparedStatement.execute();
         } catch (SQLException ex){
@@ -128,7 +128,7 @@ public class Db_processzor
         preparedStatement.setString(3, processzor.getCores());
         preparedStatement.setString(4, processzor.getThreads());
         preparedStatement.setString(5, processzor.getFrequency());
-        preparedStatement.setString(6, processzor.getMaxFrequency());
+        preparedStatement.setString(6, processzor.getMaxfrequency());
         preparedStatement.setString(7, processzor.getPrice());
         preparedStatement.setInt(8, Integer.parseInt(processzor.getID()));
         preparedStatement.execute();

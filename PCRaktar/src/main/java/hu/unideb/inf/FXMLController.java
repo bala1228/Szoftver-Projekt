@@ -1,15 +1,17 @@
 package hu.unideb.inf;
 
 import Components.Alaplap;
-import Database.Db_gephaz;
 import Components.Gephaz;
 import Components.Memoria;
 import Components.Processzor;
 import Components.Videokartya;
+
+import Database.Db_gephaz;
 import Database.Db_alaplap;
 import Database.Db_memoria;
 import Database.Db_processzor;
 import Database.Db_videokartya;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -46,7 +48,7 @@ public class FXMLController implements Initializable {
    Db_gephaz gh=new Db_gephaz();
    Db_alaplap al=new Db_alaplap();
    Db_memoria m=new Db_memoria();
-   Db_processzor psz=new Db_processzor();
+   Db_processzor pr=new Db_processzor();
    Db_videokartya vk=new Db_videokartya();
     
    private final String MENU_EXIT="Kilépés";
@@ -560,7 +562,7 @@ try
   
         
          TableColumn memoryslotCol= new TableColumn("Memória Fog:");
-        memoryslotCol.setMinWidth(120);
+        memoryslotCol.setMinWidth(100);
         memoryslotCol.setCellFactory(TextFieldTableCell.forTableColumn());
         memoryslotCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("memoryslot"));
         
@@ -571,16 +573,16 @@ try
                     public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
                     {
                         Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
-                        actualAlaplap.setMemorySlot(t.getNewValue());
+                        actualAlaplap.setMemoryslot(t.getNewValue());
                         al.updateAlaplap(actualAlaplap);
                     }
                 }
         );
         
-        TableColumn amountofmemCol= new TableColumn("Memóriafoglalatok Száma:");
-        amountofmemCol.setMinWidth(120);
+       TableColumn amountofmemCol= new TableColumn("Memórahelyek Száma:");
+        amountofmemCol.setMinWidth(100);
         amountofmemCol.setCellFactory(TextFieldTableCell.forTableColumn());
-       	amountofmemCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("amountofmem"));
+        amountofmemCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("amountofmem"));
         
         amountofmemCol.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
@@ -588,8 +590,8 @@ try
                     @Override
                     public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
                     {
-                         Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
-                        actualAlaplap.setAmountOfMem(t.getNewValue());
+                        Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualAlaplap.setAmountofmem(t.getNewValue());
                         al.updateAlaplap(actualAlaplap);
                     }
                 }
@@ -714,8 +716,7 @@ try
     @FXML
     void exportalasAMemoriahoz(ActionEvent event) {
         menuPane.setOpacity(0.3);
-        menuPane.setDisable(true); 
-        
+        menuPane.setDisable(true);        
         memoriaPane.setOpacity(0.3);
         memoriaPane.setDisable(true); 
         popUpMemoriaExportPane.setVisible(true);
@@ -1025,29 +1026,83 @@ try
 
     @FXML
     void exportalasAProcesszorhoz(ActionEvent event) {
-
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true);        
+        processzorPane.setOpacity(0.3);
+        processzorPane.setDisable(true); 
+        popUpProcesszorExportPane.setVisible(true);
     }
 
  
  
     @FXML
     void popUpProcesszorExportalasMegseBttAction(ActionEvent event) {
-
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        processzorPane.setOpacity(1);
+        processzorPane.setDisable(false); 
+        popUpProcesszorExportPane.setVisible(false);
     }
 
     @FXML
     void popUpProcesszorExportalasPDFBttAction(ActionEvent event) {
-
+        String fileNev=processzorExportFileNeveInput.getText();
+        fileNev = fileNev.replaceAll("\\s+","");
+        
+        if(fileNev != null && !fileNev.equals("") )
+        {              
+            //ide kéne valami nagyon!!!!!444!!!!444!4!!!!!!444!
+        }
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        processzorPane.setOpacity(1);
+        processzorPane.setDisable(false); 
+        popUpProcesszorExportPane.setVisible(false);
     }
 
     @FXML
     void popUpProcesszorHozzaadasBttAction(ActionEvent event) {
-
+        try
+        {
+        Processzor newProcesszor= new Processzor(
+                processzorHozzadasNameInput.getText(),
+                processzorHozzadasSocketInput.getText(),
+                processzorHozzadasCoresInput.getText(),
+                processzorHozzadasThreadsInput.getText(),               
+                processzorHozzadasFrequencyInput.getText(),
+		processzorHozzadasMaxfrequencyInput.getText(),
+                processzorHozzadasPriceInput.getText());   
+                  
+        dataProcesszor.add(newProcesszor);
+        pr.addProcesszor(newProcesszor);
+                  
+        processzorHozzadasNameInput.clear();
+        processzorHozzadasSocketInput.clear();
+        processzorHozzadasCoresInput.clear();
+        processzorHozzadasThreadsInput.clear();             
+        processzorHozzadasFrequencyInput.clear();
+	processzorHozzadasMaxfrequencyInput.clear();
+        processzorHozzadasPriceInput.clear();
+        
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        processzorPane.setOpacity(1);
+        processzorPane.setDisable(false); 
+        popUpProcesszorHozzadasPane.setVisible(false);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void popUpProcesszorMegseBttAction(ActionEvent event) {
-
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        processzorPane.setOpacity(1);
+        processzorPane.setDisable(false); 
+        popUpProcesszorHozzadasPane.setVisible(false);
     }
 
      private final ObservableList<Processzor> dataProcesszor=
@@ -1055,9 +1110,190 @@ try
     
     @FXML
     void ujHozzadasAProcesszorhoz(ActionEvent event) {
-
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true);        
+        processzorPane.setOpacity(0.3);
+        processzorPane.setDisable(true); 
+        popUpProcesszorHozzadasPane.setVisible(true);
     }
 
+public void setTableDataProcesszor(){
+        TableColumn nevCol= new TableColumn("Processzor:");
+        nevCol.setMinWidth(100);
+        nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nevCol.setCellValueFactory(new PropertyValueFactory<Processzor,String>("name"));
+        
+        nevCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Processzor,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Processzor,String> t)
+                    {
+                        Processzor actualProcesszor= (Processzor) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualProcesszor.setName(t.getNewValue());
+                        pr.updateProcesszor(actualProcesszor);
+                    }
+                }
+        );
+        
+        
+         TableColumn socketCol= new TableColumn("Foglalat:");
+        socketCol.setMinWidth(100);
+        socketCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        socketCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("socket"));
+        
+        socketCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Processzor,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Processzor,String> t)
+                    {
+                         Processzor actualProcesszor= (Processzor) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualProcesszor.setSocket(t.getNewValue());
+                        pr.updateProcesszor(actualProcesszor);
+                    }
+                }
+        );
+        
+         TableColumn coresCol= new TableColumn("Magok száma:");
+        coresCol.setMinWidth(100);
+        coresCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        coresCol.setCellValueFactory(new PropertyValueFactory<Processzor,String>("cores"));
+        
+         coresCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Processzor,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Processzor,String> t)
+                    {
+                         Processzor actualProcesszor= (Processzor) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualProcesszor.setCores(t.getNewValue());
+                        pr.updateProcesszor(actualProcesszor);
+                    }
+                }
+        );
+        
+  
+        
+         TableColumn threadsCol= new TableColumn("Szálak száma:");
+        threadsCol.setMinWidth(100);
+        threadsCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        threadsCol.setCellValueFactory(new PropertyValueFactory<Processzor,String>("threads"));
+        
+        threadsCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Processzor,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Processzor,String> t)
+                    {
+                        Processzor actualProcesszor= (Processzor) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualProcesszor.setThreads(t.getNewValue());
+                        pr.updateProcesszor(actualProcesszor);
+                    }
+                }
+        );
+        
+        TableColumn frequencyCol= new TableColumn("Órajel:");
+        frequencyCol.setMinWidth(100);
+        frequencyCol.setCellFactory(TextFieldTableCell.forTableColumn());
+       	frequencyCol.setCellValueFactory(new PropertyValueFactory<Processzor,String>("frequency"));
+        
+        frequencyCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Processzor,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Processzor,String> t)
+                    {
+                         Processzor actualProcesszor= (Processzor) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualProcesszor.setFrequency(t.getNewValue());
+                        pr.updateProcesszor(actualProcesszor);
+                    }
+                }
+        );
+ 	TableColumn maxfrequencyCol= new TableColumn("Turbo Órajel:");
+        maxfrequencyCol.setMinWidth(100);
+        maxfrequencyCol.setCellFactory(TextFieldTableCell.forTableColumn());
+       	maxfrequencyCol.setCellValueFactory(new PropertyValueFactory<Processzor,String>("maxfrequency"));
+        
+        maxfrequencyCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Processzor,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Processzor,String> t)
+                    {
+                         Processzor actualProcesszor= (Processzor) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualProcesszor.setMaxfrequency(t.getNewValue());
+                        pr.updateProcesszor(actualProcesszor);
+                    }
+                }
+        );
+                    
+        
+        TableColumn arCol= new TableColumn("Ár");
+        arCol.setMinWidth(100);
+        arCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        arCol.setCellValueFactory(new PropertyValueFactory<Processzor,String>("price"));
+        
+        arCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Processzor,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Processzor,String> t)
+                    {
+                        Processzor actualProcesszor= (Processzor) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualProcesszor.setPrice(t.getNewValue());
+                        pr.updateProcesszor(actualProcesszor);
+                    }
+                }
+        );
+        
+        TableColumn removeCol= new TableColumn("Törlés");
+        
+
+        Callback<TableColumn<Processzor, String>, TableCell<Processzor, String>> cellFactory = 
+                new Callback<TableColumn<Processzor, String>, TableCell<Processzor, String>>()
+                {
+                    @Override
+                    public TableCell call( final TableColumn<Processzor, String> param )
+                    {
+                        final TableCell<Processzor, String> cell = new TableCell<Processzor, String>()
+                        {   
+                            final Button btn = new Button( "Törlés" );
+
+                            @Override
+                            public void updateItem( String item, boolean empty )
+                            {
+                                super.updateItem( item, empty );
+                                if ( empty )
+                                {
+                                    setGraphic( null );
+                                    setText( null );
+                                }
+                                else
+                                {
+                                    btn.setOnAction( ( ActionEvent event ) ->
+                                            {
+                                                Processzor processzor = getTableView().getItems().get( getIndex() );
+                                                dataProcesszor.remove(processzor);
+                                                pr.removeProcesszor(processzor);
+                                            } );
+                                    setGraphic( btn );
+                                    setText( null );
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        
+        
+        processzorTable.getColumns().addAll(nevCol,socketCol,
+                coresCol,threadsCol,frequencyCol,maxfrequencyCol,arCol,removeCol);
+        
+        dataProcesszor.addAll(pr.getAllProcesszor());
+        
+        processzorTable.setItems(dataProcesszor);
+}
    
     
     /*#######################################################*/
@@ -1261,8 +1497,11 @@ try
     @Override
     public void initialize(URL url, ResourceBundle rb) {       
        
+        
         setTableDataAlaplap();
         setTableDataGephaz();
+        setTableDataMemoria();
+        setTableDataProcesszor();
         setMenuData();
         setStarterPic();
       
