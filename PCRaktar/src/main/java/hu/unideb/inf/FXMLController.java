@@ -739,7 +739,8 @@ try
         
         if(fileNev != null && !fileNev.equals("") )
         {              
-            /*KiEG  */
+            PdfGeneration pdfCreator=new PdfGeneration();
+            pdfCreator.pdfGenrationMemoria(fileNev,dataMemoria);
         }
         menuPane.setOpacity(1);
         menuPane.setDisable(false);
@@ -790,7 +791,7 @@ try
         menuPane.setDisable(false);
         memoriaPane.setOpacity(1);
         memoriaPane.setDisable(false); 
-        popUpMemoriaExportPane.setVisible(false);
+        popUpMemoriaHozzadasPane.setVisible(false);
     }
 
    private final ObservableList<Memoria> dataMemoria=
@@ -1051,7 +1052,8 @@ try
         
         if(fileNev != null && !fileNev.equals("") )
         {              
-            //ide kéne valami nagyon!!!!!444!!!!444!4!!!!!!444!
+           PdfGeneration pdfCreator=new PdfGeneration();
+            pdfCreator.pdfGenrationProcesszor(fileNev,dataProcesszor);
         }
         menuPane.setOpacity(1);
         menuPane.setDisable(false);
