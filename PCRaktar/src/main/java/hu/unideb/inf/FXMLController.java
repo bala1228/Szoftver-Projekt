@@ -1737,7 +1737,7 @@ public void setTableDataProcesszor(){
     }
     
      public void setStarterPic(){
-        Image image = new Image("https://e7.pngegg.com/pngimages/534/1005/png-clipart-computer-monitors-Gephazal-computer-output-device-desktop-computers-multimedia-computer-desktop-pc-computer-computer-monitor-accessory.png"); 
+        Image image = new Image("https://en.pimg.jp/042/218/085/1/42218085.jpg"); 
         ImageView imageview = new ImageView(image);
         starterPane.getChildren().add(imageview);
         
