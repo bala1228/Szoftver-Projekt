@@ -137,7 +137,7 @@ public class Db_alaplap
             
     }
     
-    public void removeGephaz(Alaplap alaplap){
+    public void removeAlaplap(Alaplap alaplap){
       try {
             String sql = "delete from alaplap where id = ?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
