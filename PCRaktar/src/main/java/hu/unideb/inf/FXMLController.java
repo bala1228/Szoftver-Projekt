@@ -1,7 +1,15 @@
 package hu.unideb.inf;
 
+import Components.Alaplap;
 import Database.Db_gephaz;
 import Components.Gephaz;
+import Components.Memoria;
+import Components.Processzor;
+import Components.Videokartya;
+import Database.Db_alaplap;
+import Database.Db_memoria;
+import Database.Db_processzor;
+import Database.Db_videokartya;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -36,12 +44,18 @@ import javafx.util.Callback;
 public class FXMLController implements Initializable {
     
    Db_gephaz gh=new Db_gephaz();
+   Db_alaplap al=new Db_alaplap();
+   Db_memoria m=new Db_memoria();
+   Db_processzor psz=new Db_processzor();
+   Db_videokartya vk=new Db_videokartya();
     
    private final String MENU_EXIT="Kilépés";
    private final String MENU_GEPHAZAK="Gépházak"; 
    private final String MENU_PC_RESZEK="PC részek"; 
    private final String MENU_ALAPLAP="Alaplapok";
    private final String MENU_MEMORIA="Memóriák";
+   private final String MENU_PROCESSZOR="Processzorok";
+   private final String MENU_VIDEOKARTYA="Videokartya";
    
    @FXML
     private AnchorPane BASE;
@@ -51,7 +65,7 @@ public class FXMLController implements Initializable {
 
     @FXML
     private Pane starterPane;
-    
+  /*###################################################################*/  
     /*gépház*/
     
     @FXML
@@ -118,7 +132,7 @@ public class FXMLController implements Initializable {
         if(fileNev != null && !fileNev.equals("") )
         {              
             PdfGeneration pdfCreator=new PdfGeneration();
-            pdfCreator.pdfGenration(fileNev,dataGephaz);
+            pdfCreator.pdfGenrationGephaz(fileNev,dataGephaz);
         }
         menuPane.setOpacity(1);
         menuPane.setDisable(false);
@@ -188,12 +202,7 @@ public class FXMLController implements Initializable {
             FXCollections.observableArrayList();
     
     
-    public void setStarterPic(){
-        Image image = new Image("https://e7.pngegg.com/pngimages/534/1005/png-clipart-computer-monitors-Gephazal-computer-output-device-desktop-computers-multimedia-computer-desktop-pc-computer-computer-monitor-accessory.png"); 
-        ImageView imageview = new ImageView(image);
-        starterPane.getChildren().add(imageview);
-        
-    }
+   
     
     public void setTableDataGephaz(){
         TableColumn nevCol= new TableColumn("Gépház:");
@@ -361,12 +370,6 @@ public class FXMLController implements Initializable {
     /*#####################################################*/
      
     @FXML
-    private Button HozzadasGephazBtt;
-
-    @FXML
-    private Button ExportálásGephazBtt;
-
-    @FXML
     private TableView alaplapTable;
     
     @FXML
@@ -406,37 +409,258 @@ public class FXMLController implements Initializable {
     private TextField alaplapExportFileNeveInput;
 
 
-
     @FXML
     void exportalasAzAlaplaphoz(ActionEvent event) {
-
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true); 
+        
+        alaplapPane.setOpacity(0.3);
+        alaplapPane.setDisable(true); 
+        popUpAlaplapExportPane.setVisible(true);
     }
 
     @FXML
     void popUpAlaplapExportalasMegseBttAction(ActionEvent event) {
-
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        alaplapPane.setOpacity(1);
+        alaplapPane.setDisable(false); 
+        popUpAlaplapExportPane.setVisible(false);
     }
 
     @FXML
     void popUpAlaplapExportalasPDFBttAction(ActionEvent event) {
-
+        String fileNev=alaplapExportFileNeveInput.getText();
+        fileNev = fileNev.replaceAll("\\s+","");
+        
+        if(fileNev != null && !fileNev.equals("") )
+        {              
+            PdfGeneration pdfCreator=new PdfGeneration();
+            pdfCreator.pdfGenrationAlaplap(fileNev,dataAlaplap);
+        }
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        alaplapPane.setOpacity(1);
+        alaplapPane.setDisable(false); 
+        popUpAlaplapExportPane.setVisible(false);
     }
 
     @FXML
     void popUpAlaplapHozzaadasBttAction(ActionEvent event) {
-
+try
+        {
+        Alaplap newAlaplap= new Alaplap(
+                alaplapHozzadasNameInput.getText(),
+                alaplapHozzadasFormfactorInput.getText(),
+                alaplapHozzadasSocketInput.getText(),
+                alaplapHozzadasMemoryslotInput.getText(),               
+                alaplapHozzadasAmountofmemInput.getText(),
+                alaplapHozzadasPriceInput.getText());   
+                  
+        dataAlaplap.add(newAlaplap);
+        al.addAlaplap(newAlaplap);
+                  
+        alaplapHozzadasNameInput.clear();
+        alaplapHozzadasFormfactorInput.clear();
+        alaplapHozzadasSocketInput.clear();
+        alaplapHozzadasMemoryslotInput.clear();             
+        alaplapHozzadasAmountofmemInput.clear();
+        alaplapHozzadasPriceInput.clear();
+        
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        alaplapPane.setOpacity(1);
+        alaplapPane.setDisable(false); 
+        popUpAlaplapHozzadasPane.setVisible(false);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void popUpAlaplapMegseBttAction(ActionEvent event) {
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        alaplapPane.setOpacity(1);
+        alaplapPane.setDisable(false); 
+        popUpAlaplapHozzadasPane.setVisible(false);
 
     }
 
     @FXML
     void ujHozzadasAzAlaplaphozhoz(ActionEvent event) {
-
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true);        
+        alaplapPane.setOpacity(0.3);
+        alaplapPane.setDisable(true); 
+        popUpAlaplapHozzadasPane.setVisible(true);
     }
     
+    private final ObservableList<Alaplap> dataAlaplap=
+            FXCollections.observableArrayList();
+    
+    public void setTableDataAlaplap(){
+        TableColumn nevCol= new TableColumn("Alaplap:");
+        nevCol.setMinWidth(100);
+        nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nevCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("name"));
+        
+        nevCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                        Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualAlaplap.setName(t.getNewValue());
+                        al.updateAlaplap(actualAlaplap);
+                    }
+                }
+        );
+        
+        
+         TableColumn formfactorCol= new TableColumn("Formátum:");
+        formfactorCol.setMinWidth(100);
+        formfactorCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        formfactorCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("formfactor"));
+        
+        formfactorCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                         Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualAlaplap.setFormfactor(t.getNewValue());
+                        al.updateAlaplap(actualAlaplap);
+                    }
+                }
+        );
+        
+         TableColumn socketCol= new TableColumn("Foglalat:");
+        socketCol.setMinWidth(100);
+        socketCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        socketCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("socket"));
+        
+         socketCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                         Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualAlaplap.setSocket(t.getNewValue());
+                        al.updateAlaplap(actualAlaplap);
+                    }
+                }
+        );
+        
+  
+        
+         TableColumn memoryslotCol= new TableColumn("Memória Fog:");
+        memoryslotCol.setMinWidth(120);
+        memoryslotCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        memoryslotCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("memoryslot"));
+        
+        memoryslotCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                        Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualAlaplap.setMemorySlot(t.getNewValue());
+                        al.updateAlaplap(actualAlaplap);
+                    }
+                }
+        );
+        
+        TableColumn amountofmemCol= new TableColumn("Memóriafoglalatok Száma:");
+        amountofmemCol.setMinWidth(120);
+        amountofmemCol.setCellFactory(TextFieldTableCell.forTableColumn());
+       	amountofmemCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("amountofmem"));
+        
+        amountofmemCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                         Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualAlaplap.setAmountOfMem(t.getNewValue());
+                        al.updateAlaplap(actualAlaplap);
+                    }
+                }
+        );
+                    
+        
+         TableColumn arCol= new TableColumn("Ár");
+        arCol.setMinWidth(100);
+        arCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        arCol.setCellValueFactory(new PropertyValueFactory<Alaplap,String>("price"));
+        
+        arCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Alaplap,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Alaplap,String> t)
+                    {
+                        Alaplap actualAlaplap= (Alaplap) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualAlaplap.setPrice(t.getNewValue());
+                        al.updateAlaplap(actualAlaplap);
+                    }
+                }
+        );
+        
+        TableColumn removeCol= new TableColumn("Törlés");
+        
+
+        Callback<TableColumn<Alaplap, String>, TableCell<Alaplap, String>> cellFactory = 
+                new Callback<TableColumn<Alaplap, String>, TableCell<Alaplap, String>>()
+                {
+                    @Override
+                    public TableCell call( final TableColumn<Alaplap, String> param )
+                    {
+                        final TableCell<Alaplap, String> cell = new TableCell<Alaplap, String>()
+                        {   
+                            final Button btn = new Button( "Törlés" );
+
+                            @Override
+                            public void updateItem( String item, boolean empty )
+                            {
+                                super.updateItem( item, empty );
+                                if ( empty )
+                                {
+                                    setGraphic( null );
+                                    setText( null );
+                                }
+                                else
+                                {
+                                    btn.setOnAction( ( ActionEvent event ) ->
+                                            {
+                                                Alaplap alaplap = getTableView().getItems().get( getIndex() );
+                                                dataAlaplap.remove(alaplap);
+                                                al.removeAlaplap(alaplap);
+                                            } );
+                                    setGraphic( btn );
+                                    setText( null );
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        
+        
+        alaplapTable.getColumns().addAll(nevCol,formfactorCol,
+                socketCol,memoryslotCol,amountofmemCol,arCol,removeCol);
+        
+        dataAlaplap.addAll(al.getAllAlaplap());
+        
+        alaplapTable.setItems(dataAlaplap);
+    }
     /*#####################################################*/
                     /*Memória*/
      
@@ -489,38 +713,423 @@ public class FXMLController implements Initializable {
 
     @FXML
     void exportalasAMemoriahoz(ActionEvent event) {
-
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true); 
+        
+        memoriaPane.setOpacity(0.3);
+        memoriaPane.setDisable(true); 
+        popUpMemoriaExportPane.setVisible(true);
     }
 
  
     @FXML
     void popUpMemoriaExportalasMegseBttAction(ActionEvent event) {
-
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        memoriaPane.setOpacity(1);
+        memoriaPane.setDisable(false); 
+        popUpMemoriaExportPane.setVisible(false);
     }
 
     @FXML
     void popUpMemoriaExportalasPDFBttAction(ActionEvent event) {
-
+        String fileNev=memoriaExportFileNeveInput.getText();
+        fileNev = fileNev.replaceAll("\\s+","");
+        
+        if(fileNev != null && !fileNev.equals("") )
+        {              
+            /*KiEG  */
+        }
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        memoriaPane.setOpacity(1);
+        memoriaPane.setDisable(false); 
+        popUpMemoriaExportPane.setVisible(false);
     }
 
     @FXML
     void popUpMemoriaHozzaadasBttAction(ActionEvent event) {
-
+         try
+        {
+        Memoria newMemoria= new Memoria(
+                memoriaHozzadasNameInput.getText(),
+                memoriaHozzadasSlotInput.getText(),
+                memoriaHozzadasSizeInput.getText(),
+                memoriaHozzadasFrequencyInput.getText(),
+                memoriaHozzadasTimingInput.getText(),
+                memoriaHozzadasAmountInput.getText(),
+                memoriaHozzadasPriceInput.getText());  
+                  
+        dataMemoria.add(newMemoria);
+        m.addMemoria(newMemoria);
+                  
+        memoriaHozzadasNameInput.clear();
+        memoriaHozzadasSlotInput.clear();
+        memoriaHozzadasSizeInput.clear();
+        memoriaHozzadasFrequencyInput.clear();
+        memoriaHozzadasTimingInput.clear();
+        memoriaHozzadasAmountInput.clear();
+        memoriaHozzadasPriceInput.clear(); 
+        
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        memoriaPane.setOpacity(1);
+        memoriaPane.setDisable(false); 
+        popUpMemoriaHozzadasPane.setVisible(false);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void popUpMemoriaMegseBttAction(ActionEvent event) {
+        menuPane.setOpacity(1);
+        menuPane.setDisable(false);
+        memoriaPane.setOpacity(1);
+        memoriaPane.setDisable(false); 
+        popUpMemoriaExportPane.setVisible(false);
+    }
+
+   private final ObservableList<Memoria> dataMemoria=
+            FXCollections.observableArrayList();
+
+    @FXML
+    void ujHozzadasAMemoriahozhozhoz(ActionEvent event) {
+        menuPane.setOpacity(0.3);
+        menuPane.setDisable(true);        
+        memoriaPane.setOpacity(0.3);
+        memoriaPane.setDisable(true); 
+        popUpMemoriaHozzadasPane.setVisible(true);
+    }
+
+    
+    public void setTableDataMemoria(){
+        TableColumn nevCol= new TableColumn("Memoria:");
+        nevCol.setMinWidth(100);
+        nevCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        nevCol.setCellValueFactory(new PropertyValueFactory<Memoria,String>("name"));
+        
+        nevCol.setOnEditCommit(
+                new EventHandler<TableColumn.CellEditEvent<Memoria,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Memoria,String> t)
+                    {
+                        Memoria actualMemoria= (Memoria) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualMemoria.setName(t.getNewValue());
+                        m.updateMemoria(actualMemoria);
+                    }
+                }
+        );
+        
+        TableColumn slotCol= new TableColumn("Foglalat:");
+        slotCol.setMinWidth(100);
+        slotCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        slotCol.setCellValueFactory(new PropertyValueFactory<Memoria,String>("slot"));
+        
+        slotCol.setOnEditCommit(
+        new EventHandler<TableColumn.CellEditEvent<Memoria,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Memoria,String> t)
+                    {
+                        Memoria actualMemoria= (Memoria) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualMemoria.setSlot(t.getNewValue());
+                        m.updateMemoria(actualMemoria);
+                    }
+                }
+        );
+        
+        TableColumn sizeCol= new TableColumn("Méret:");
+        sizeCol.setMinWidth(100);
+        sizeCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        sizeCol.setCellValueFactory(new PropertyValueFactory<Memoria,String>("size"));
+        
+        sizeCol.setOnEditCommit(
+        new EventHandler<TableColumn.CellEditEvent<Memoria,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Memoria,String> t)
+                    {
+                        Memoria actualMemoria= (Memoria) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualMemoria.setSize(t.getNewValue());
+                        m.updateMemoria(actualMemoria);
+                    }
+                }
+        );
+        
+        TableColumn frequencyCol= new TableColumn("Órajel:");
+        frequencyCol.setMinWidth(100);
+        frequencyCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        frequencyCol.setCellValueFactory(new PropertyValueFactory<Memoria,String>("frequency"));
+        
+        frequencyCol.setOnEditCommit(
+        new EventHandler<TableColumn.CellEditEvent<Memoria,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Memoria,String> t)
+                    {
+                        Memoria actualMemoria= (Memoria) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualMemoria.setFrequency(t.getNewValue());
+                        m.updateMemoria(actualMemoria);
+                    }
+                }
+        );
+        
+        TableColumn timingCol= new TableColumn("Időzítés:");
+        timingCol.setMinWidth(100);
+        timingCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        timingCol.setCellValueFactory(new PropertyValueFactory<Memoria,String>("timing"));
+        
+        timingCol.setOnEditCommit(
+        new EventHandler<TableColumn.CellEditEvent<Memoria,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Memoria,String> t)
+                    {
+                        Memoria actualMemoria= (Memoria) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualMemoria.setTiming(t.getNewValue());
+                        m.updateMemoria(actualMemoria);
+                    }
+                }
+        );
+        
+        TableColumn amountCol= new TableColumn("KIT tartalma:");
+        amountCol.setMinWidth(100);
+        amountCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        amountCol.setCellValueFactory(new PropertyValueFactory<Memoria,String>("amount"));
+        
+        timingCol.setOnEditCommit(
+        new EventHandler<TableColumn.CellEditEvent<Memoria,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Memoria,String> t)
+                    {
+                        Memoria actualMemoria= (Memoria) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualMemoria.setAmount(t.getNewValue());
+                        m.updateMemoria(actualMemoria);
+                    }
+                }
+        );
+        
+         TableColumn priceCol= new TableColumn("Ár");
+        priceCol.setMinWidth(100);
+        priceCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        priceCol.setCellValueFactory(new PropertyValueFactory<Memoria,String>("price"));
+        
+        priceCol.setOnEditCommit(
+        new EventHandler<TableColumn.CellEditEvent<Memoria,String>> ()
+                {
+                    @Override
+                    public void handle(TableColumn.CellEditEvent<Memoria,String> t)
+                    {
+                        Memoria actualMemoria= (Memoria) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                        actualMemoria.setPrice(t.getNewValue());
+                        m.updateMemoria(actualMemoria);
+                    }
+                }
+        );
+        
+               
+        
+        TableColumn removeCol= new TableColumn("Törlés");
+        
+
+        Callback<TableColumn<Memoria, String>, TableCell<Memoria, String>> cellFactory = 
+                new Callback<TableColumn<Memoria, String>, TableCell<Memoria, String>>()
+                {
+                    @Override
+                    public TableCell call( final TableColumn<Memoria, String> param )
+                    {
+                        final TableCell<Memoria, String> cell = new TableCell<Memoria, String>()
+                        {   
+                            final Button btn = new Button( "Törlés" );
+
+                            @Override
+                            public void updateItem( String item, boolean empty )
+                            {
+                                super.updateItem( item, empty );
+                                if ( empty )
+                                {
+                                    setGraphic( null );
+                                    setText( null );
+                                }
+                                else
+                                {
+                                    btn.setOnAction( ( ActionEvent event ) ->
+                                            {
+                                                Memoria memoria = getTableView().getItems().get( getIndex() );
+                                                dataMemoria.remove(memoria);
+                                                m.removeMemoria(memoria);
+                                            } );
+                                    setGraphic( btn );
+                                    setText( null );
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+                };
+        
+        
+        memoriaTable.getColumns().addAll(nevCol,slotCol,
+                sizeCol,frequencyCol,timingCol,amountCol,priceCol,removeCol);
+        
+        dataMemoria.addAll(m.getAllMemoria());
+        
+        memoriaTable.setItems(dataMemoria);
+    } 
+    
+    /*#######################################################*/
+                    /*Processzor*/
+   
+    @FXML
+    private Pane processzorPane;
+
+    @FXML
+    private TableView processzorTable;
+
+    @FXML
+    private Pane popUpProcesszorHozzadasPane;
+
+    @FXML
+    private TextField processzorHozzadasNameInput;
+
+    @FXML
+    private TextField processzorHozzadasSocketInput;
+
+    @FXML
+    private TextField processzorHozzadasCoresInput;
+
+    @FXML
+    private TextField processzorHozzadasThreadsInput;
+
+    @FXML
+    private TextField processzorHozzadasFrequencyInput;
+
+    @FXML
+    private TextField processzorHozzadasMaxfrequencyInput;
+
+    @FXML
+    private TextField processzorHozzadasPriceInput;
+
+    @FXML
+    private Pane popUpProcesszorExportPane;
+
+    @FXML
+    private TextField processzorExportFileNeveInput;
+
+  
+
+    @FXML
+    void exportalasAProcesszorhoz(ActionEvent event) {
+
+    }
+
+ 
+ 
+    @FXML
+    void popUpProcesszorExportalasMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpProcesszorExportalasPDFBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpProcesszorHozzaadasBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpProcesszorMegseBttAction(ActionEvent event) {
+
+    }
+
+     private final ObservableList<Processzor> dataProcesszor=
+            FXCollections.observableArrayList();
+    
+    @FXML
+    void ujHozzadasAProcesszorhoz(ActionEvent event) {
 
     }
 
    
+    
+    /*#######################################################*/
+             /*Videokartya*/
 
     @FXML
-    void ujHozzadasAMemoriahozhozhoz(ActionEvent event) {
+    private Pane videokartyaPane;
+
+    @FXML
+    private TableView videokartyaTable;
+
+    @FXML
+    private Pane popUpVideokartyaHozzadasPane;
+
+    @FXML
+    private TextField videokartyaHozzadasManifactureInput;
+
+    @FXML
+    private TextField videokartyaHozzadasNameInput;
+
+    @FXML
+    private TextField videokartyaHozzadasSlotInput;
+
+    @FXML
+    private TextField videokartyaHozzadasVramInput;
+
+    @FXML
+    private TextField videokartyaHozzadasFrequencyInput;
+
+    @FXML
+    private TextField videokartyaHozzadasLengthInput;
+
+    @FXML
+    private TextField videokartyaHozzadasPriceInput;
+
+    @FXML
+    private Pane popUpVideokartyaExportPane;
+
+
+
+    @FXML
+    void exportalasAVideokartyahoz(ActionEvent event) {
 
     }
 
-    
+    @FXML
+    void popUpVideokartyaExportalasMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpVideokartyaExportalasPDFBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpVideokartyaHozzaadasBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void popUpVideokartyaMegseBttAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ujHozzadasAVideokartyahoz(ActionEvent event) {
+
+    }
+
+    private final ObservableList<Videokartya> dataVideokartya=
+            FXCollections.observableArrayList();
     /*#######################################################*/
 
     public void setMenuData(){
@@ -536,8 +1145,10 @@ public class FXMLController implements Initializable {
         TreeItem<String> nodeItemA1= new TreeItem<>(MENU_GEPHAZAK/*,gephaznodes*/);
         TreeItem<String> nodeItemA2= new TreeItem<>(MENU_ALAPLAP/*,exportnodes*/);
         TreeItem<String> nodeItemA3= new TreeItem<>(MENU_MEMORIA/*,exportnodes*/);
+        TreeItem<String> nodeItemA4= new TreeItem<>(MENU_PROCESSZOR/*,exportnodes*/);
+        TreeItem<String> nodeItemA5= new TreeItem<>(MENU_VIDEOKARTYA/*,exportnodes*/);
        
-        nodeItemA.getChildren().addAll(nodeItemA1,nodeItemA2,nodeItemA3);
+        nodeItemA.getChildren().addAll(nodeItemA1,nodeItemA2,nodeItemA3,nodeItemA4,nodeItemA5);
         treeItemroot1.getChildren().addAll( nodeItemA, nodeItemB);
         
         menuPane.getChildren().add(treeView);
@@ -570,6 +1181,8 @@ public class FXMLController implements Initializable {
                                   starterPane.setVisible(false);
                                   alaplapPane.setVisible(false);
                                   memoriaPane.setVisible(false);
+                                  processzorPane.setVisible(false);
+                                  videokartyaPane.setVisible(false);
                                 }
                                 catch(Exception e){}
                                 break;
@@ -581,6 +1194,8 @@ public class FXMLController implements Initializable {
                                   starterPane.setVisible(false);
                                   alaplapPane.setVisible(true);
                                   memoriaPane.setVisible(false);
+                                  processzorPane.setVisible(false);
+                                  videokartyaPane.setVisible(false);
                                 }
                                 catch(Exception e){}
                                 break;  
@@ -592,9 +1207,38 @@ public class FXMLController implements Initializable {
                                   starterPane.setVisible(false);
                                   alaplapPane.setVisible(false);
                                   memoriaPane.setVisible(true);
+                                  processzorPane.setVisible(false);
+                                  videokartyaPane.setVisible(false);
                                 }
                                 catch(Exception e){}
-                                break;        
+                                break;
+                              
+                            case MENU_PROCESSZOR:
+                                try
+                                {   
+                                  hazPane.setVisible(false);
+                                  starterPane.setVisible(false);
+                                  alaplapPane.setVisible(false);
+                                  memoriaPane.setVisible(false);
+                                  processzorPane.setVisible(true);
+                                  videokartyaPane.setVisible(false);
+                                  
+                                }
+                                catch(Exception e){}
+                                break; 
+                                
+                             case MENU_VIDEOKARTYA:
+                                try
+                                {   
+                                  hazPane.setVisible(false);
+                                  starterPane.setVisible(false);
+                                  alaplapPane.setVisible(false);
+                                  memoriaPane.setVisible(false);
+                                  processzorPane.setVisible(false);
+                                  videokartyaPane.setVisible(true);
+                                }
+                                catch(Exception e){}
+                                break;                
            
                             case MENU_EXIT:
                                 System.exit(0);
@@ -607,9 +1251,17 @@ public class FXMLController implements Initializable {
 
     }
     
+     public void setStarterPic(){
+        Image image = new Image("https://e7.pngegg.com/pngimages/534/1005/png-clipart-computer-monitors-Gephazal-computer-output-device-desktop-computers-multimedia-computer-desktop-pc-computer-computer-monitor-accessory.png"); 
+        ImageView imageview = new ImageView(image);
+        starterPane.getChildren().add(imageview);
+        
+    }
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {       
+       
+        setTableDataAlaplap();
         setTableDataGephaz();
         setMenuData();
         setStarterPic();

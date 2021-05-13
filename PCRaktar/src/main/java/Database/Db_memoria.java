@@ -117,7 +117,7 @@ public class Db_memoria
         
         
 
-    public void updateGephaz(Memoria memoria)
+    public void updateMemoria(Memoria memoria)
     {
         try
         {
@@ -139,7 +139,7 @@ public class Db_memoria
             
     }
     
-    public void removeGephaz(Memoria memoria){
+    public void removeMemoria(Memoria memoria){
       try {
             String sql = "delete from memoria where id = ?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
